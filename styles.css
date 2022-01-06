@@ -1,0 +1,28 @@
+body{font-family:arial;font-size:13px}
+
+.holder{
+    background-color:rgba(60,60,180);
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+
+h1{font-size:1.5rem}
+
+
+.card{
+    width:200px;
+    min-height:100px;
+    background-color: rgb(200,200,255,0.6);
+    margin:10px;
+    padding:5px;
+    border-radius:3px;
+    border:1px solid white;
+    box-shadow:10px 10px 10px rgba(0,0,0,.2);
+}
+
+
+.colorSquare{
+    width:30px;
+    height:30px;
+}

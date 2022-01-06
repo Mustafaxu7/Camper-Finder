@@ -5,12 +5,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
+    <script src="script.js" defer></script>
+    <link rel='stylesheet' href='styles.css'>
 </head>
 
 <body>
+
+    <form>
+        <label for='make'>Make</label><input id='make' type="text>"><br />
+        <label for='model'>Model</label><input id='model' type="text"><br />
+        <label for='price'>Price</label><input id='price' type="number"><br />
+        <label for='color'>Colour</label><input id='color' type="color"><br />
+    </form>
+
+    <button id='save'>Save</button><br />
+
+    <select id='whichColour'>
+        <option value="">Select Colour</option>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="white">White</option>
+    </select>
+
+    <main id='holder' class="holder">
+    </main>
 
 </body>
 
