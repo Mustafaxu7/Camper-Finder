@@ -1,4 +1,16 @@
-body{font-family:arial;font-size:13px}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+/* #filter{
+    
+} */
+body{
+    font-family:arial;
+    font-size:13px
+}
 
 .holder{
     background-color:rgba(60,60,180);
@@ -7,7 +19,9 @@ body{font-family:arial;font-size:13px}
     justify-content: center;
 }
 
-h1{font-size:1.5rem}
+h1{
+    font-size:1.5rem
+}
 
 
 .card{

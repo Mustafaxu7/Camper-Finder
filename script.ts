@@ -1,75 +1,41 @@
 "use strict"
 
 class Van {
-    //properties 
-    make: string = ""
-    model: string = ""
-    picture: string = ""
-    price: number = 0
-    colour: string = ""
-    mileage: number = 0
-    location: object = {}
-    features: string = ""
-    constructor(make: string, model: string, picture: string, price: number, colour: string, mileage: number, location: object, features: string) {
-        this.make = make
-        this.model = model
-        this.picture = picture
-        this.price = price
-        this.colour = colour
-        this.mileage = mileage
-        this.location = location
-        this.features = features
+    constructor(public make: string, public model: string, public picture: string, public price: number, public colour: string, public mileage: number, public location: object, public features: string) {
     }
 }
 
 let colours = "red,orange,yellow,green,blue,violet,black,white,gray".split(",")
 let makes: any = {}
 let features = ["Fixed Roof", "Pop-Up Roof", "Fridge", "Propane Gas Cooktop", "Electric Cooktop", "Grill", "Propane Gas Powered Water Heater", "Kitchen", "AC", "Bed", "Portable Toilet", "Internal Power System", "USB Charging Points", "Folding Dining Table", "Manual", "Automatic", "Travel Seats"]
-
-makes.Ford = "Fiesta,Focus,KA,Mondeo,Fusion,B-Max".split(",")
-makes.Tesla = "3,Sport,Cybertruck".split(",")
-makes.BMW = "3,5,i3,i7,1 Series".split(",")
-makes.Vauxhall = "Corsa,Insignia,Movano,Astra,Senator".split(",")
-makes.Toyota = "Yaris,Celica,MR2,Avensis,Rav4".split(",")
-makes.Nissan = "Leaf,Primera,Juke,Micra".split(",")
-
-
+makes.Volkswagen = "caddy, california, classic, kombi, trendline".split(",")
+makes.Ford = "transit, tourneo, terrier, panama, kombi".split(",")
+makes.Vauxhall = "bedford, midi, movano, turbo, vivaro".split(",")
+makes.Fiat = "ducato, randger, swift, talento, trigano".split(",")
+makes.Nissan = "nv200, env200, primastar, elgrand, elgrande".split(",")
 
 let vans: Van[] = []
-
-
 //localStorage.removeItem("vans")
 
 vans = JSON.parse(localStorage.getItem("vans")!);
 if (vans == null) {
-    vans = generateRandomVans(makes, 5)
+    vans = generateRandomVans(makes, 200)
     saveVans()
 }
 
 
 //cars.sort((a,b)=>a.price-b.price) 
 
-let whichColour = $("whichColour") //grabs the dropdown box
+let whichColour = $("whichColor") //grabs the dropdown box
 whichColour.addEventListener("change", filterByColour)
 
-
 let holder: HTMLElement = document.getElementById("holder")!
-let saveButton = document.getElementById("save")
-saveButton!.addEventListener("click", filterVan)
 
 renderVans(vans)
 
 function saveVans() {
-
-    //Store
-    //localStorage.setItem("key", "d;'d'lgf;gfd;'fd';;lhgfd';gflSmith");
-
     let vansString = JSON.stringify(vans)  //Converts our 'complex' array of car objects into a single string 
     localStorage.setItem("vans", vansString)  //permanently save (so the user can close their browser, or even swtich off - and come back to the came cars)
-
-    // Retrieve
-    //value  = localStorage.getItem("key");
-
 }
 
 function renderVans(results: Van[]) {
@@ -86,7 +52,7 @@ function renderVans(results: Van[]) {
         card.appendChild(heading)
 
         let picture = document.createElement("img")
-        picture.src = results[i].picture
+        picture.src = "vanImages/" + results[i].picture
         card.appendChild(picture)
         picture.style.width = "80%"
 
@@ -113,45 +79,16 @@ function $(id: string): HTMLElement {
     return e!
 }
 
-function filterVan() {
-
-    let make = (<HTMLInputElement>$("make")).value
-    let model = (<HTMLInputElement>$("model")).value
-    let price = parseInt((<HTMLInputElement>$("price")).value)
-    let colour = (<HTMLInputElement>$("colour")).value
-    let mileage = parseInt((<HTMLInputElement>$("mileage")).value)
-
-    vans.push(<Van>{ make: make, model: model, price: price, colour: colour, picture: randomPic() })
-    renderVans(vans)
-    saveVans()
-
-}
-
-
-function randomPic(): string {
-
-    //returns a random van image URL
-    let pics = []
-    pics.push("https://www.dethleffs.de/fileadmin/_processed_/3/a/csm_GrandAlpa_I7820-2_Frei_weiss_Seite2_ea7b35051d.png")
-    pics.push("https://www.pngkit.com/png/detail/350-3501487_vw-asset-l1-vw-kombi.png")
-    pics.push("https://randger.com/wp-content/uploads/2019/09/R640-1.png")
-    // pics.push("https://cdn.tradecentregroup.io/image/upload/q_auto/f_auto/w_400/web/Group/cars/ford/b-max.png")
-    // pics.push("https://cdn.tradecentregroup.io/image/upload/q_auto/f_auto/w_400/web/Group/cars/bmw/1-series.png")
-    // pics.push("https://cdn.tradecentregroup.io/image/upload/q_auto/f_auto/w_400/web/Group/cars/nissan/qashqai.png")
-
-    return pickFrom(pics)
-
-}
-
-
-function generateRandomVans(makes: any, numVans: number) {
+function generateRandomVans(make: any, numVans: number) {
+    let vanTypes: string[] = "fiat_ducato.png,fiat_randger.png,fiat_swift.png,fiat_talento.png,fiat_trigano.png,ford_kombi.png,ford_panama.png,ford_terrier.jpg,ford_tourneo.jpg,ford_transit.jpg,nissan_elgrand.png,nissan_elgrande.jpg,nissan_env200.png,nissan_nv200.png,nissan_primastar.jpg,vauxhall_bedford.jpg,vauxhall_midi.jpg,vauxhall_movano.jpeg,vauxhall_turbo.jpg,vauxhall_vivaro.png,vw_caddy.png,vw_california.png,vw_classic.jpg,vw_kombi.png,vw_trendline.jpg".split(",")
     let vans = []
     for (let i = 0; i < numVans; i++) {
-        let make = pickFrom(Object.keys(makes))  //Pick a manufacturer from the makes object
-        let model = pickFrom(makes[make])
-        vans.push(new Van(make, model, randomPic(), Math.random() * 10000, colours[i], Math.random() * 10000, { x: 10, y: 20 }, features[Math.random() * features.length]))
+        let pickName = pickFrom(vanTypes)
+        let makeAndModel = pickName.split(".")[0]
+        let make = makeAndModel.split("_")[0]
+        let model = makeAndModel.split("_")[1]
+        vans.push(new Van(make, model, pickName, Math.round(Math.random() * 1000), colours[Math.floor(Math.random() * colours.length)], Math.floor(Math.random() * 10000), { x: 10, y: 20 }, features[Math.random() * features.length]))
     }
-
     return vans  //send back the 'complete' list of Vans
 }
 
@@ -167,7 +104,25 @@ function randomInteger(max: number) {  //Returns a number between 1 and max (inc
 }
 
 function filterByColour() {
-    let filteredCars = vans.filter((c) => c.colour == (<HTMLSelectElement>$('whichColour')).value)
-    renderVans(filteredCars)
+    vans = vans.filter((c) => c.colour == (<HTMLSelectElement>$('whichColour')).value)
+    renderVans(vans)
 }
+
+function filterByPrice() {
+    vans = vans.filter((v) => v.price <= parseInt((<HTMLInputElement>$('whichPrice')).value))
+    renderVans(vans)
+}
+function img(fileName: string): HTMLImageElement {
+    let img = document.createElement("img");
+    img.src = fileName;
+    return img;
+}
+
+$("whichColor").addEventListener("click", filterByColour)
+
+// $("whichPrice").addEventListener("input", (e) => { $("pl").innerText = (<any>e).target.value; filterByPrice })
+// $("whichPrice").addEventListener("input", filterByPrice)
+
+
+
 // localStorage.clear()
