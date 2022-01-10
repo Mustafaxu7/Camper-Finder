@@ -4,9 +4,6 @@
     padding: 0;
 
 }
-/* #filter{
-    
-} */
 body{
     font-family:arial;
     font-size:13px
@@ -22,8 +19,9 @@ body{
 h1{
     font-size:1.5rem
 }
-
-
+body {
+    -webkit-tap-highlight-color: transparent;
+}
 .card{
     width:200px;
     min-height:100px;
@@ -34,9 +32,17 @@ h1{
     border:1px solid white;
     box-shadow:10px 10px 10px rgba(0,0,0,.2);
 }
-
-
 .colorSquare{
     width:30px;
     height:30px;
+}
+.mapUK {
+    width: 100vw;
+}
+.ukMapContainer {
+    position: relative;
+}
+svg {
+    position: absolute;
+    top: 0%;
 }

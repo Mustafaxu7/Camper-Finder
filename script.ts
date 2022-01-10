@@ -1,9 +1,21 @@
 "use strict"
 
 class Van {
-    constructor(public make: string, public model: string, public picture: string, public price: number, public colour: string, public mileage: number, public location: object, public features: string) {
+    constructor(public make: string, public model: string, public picture: string, public price: number, public colour: string, public mileage: number, public location: object, public features: string) { }
+}
+class Vector {
+    constructor(public x: number, public y: number) { }
+    static calcHypo(adjacent: number, opposite: number) {
+        return Math.sqrt(Math.pow(adjacent, 2) + Math.pow(opposite, 2));
+    }
+    static distanceBetween(a: Vector, b: Vector) {
+        return this.calcHypo(Math.abs(b.x - a.x), Math.abs(b.y - a.y));
     }
 }
+let currentMousePosition = new Vector(0, 0)
+let clickedMousePosition1 = new Vector(0, 0)
+let clickedMousePosition2 = new Vector(0, 0)
+let clickCount = 0
 
 let colours = "red,orange,yellow,green,blue,violet,black,white,gray".split(",")
 let makes: any = {}
@@ -19,7 +31,7 @@ let vans: Van[] = []
 
 vans = JSON.parse(localStorage.getItem("vans")!);
 if (vans == null) {
-    vans = generateRandomVans(makes, 200)
+    vans = generateRandomVans(makes, 5)
     saveVans()
 }
 
@@ -98,16 +110,13 @@ function pickFrom(list: string[]) {
     let r = Math.floor(Math.random() * list.length)  // generate a random number between 0 and the list length (-1)
     return list[r]  //return the chosen item
 }
-
 function randomInteger(max: number) {  //Returns a number between 1 and max (inclusive)
     return Math.floor(Math.random() * max) + 1
 }
-
 function filterByColour() {
     vans = vans.filter((c) => c.colour == (<HTMLSelectElement>$('whichColour')).value)
     renderVans(vans)
 }
-
 function filterByPrice() {
     vans = vans.filter((v) => v.price <= parseInt((<HTMLInputElement>$('whichPrice')).value))
     renderVans(vans)
@@ -120,9 +129,36 @@ function img(fileName: string): HTMLImageElement {
 
 $("whichColor").addEventListener("click", filterByColour)
 
-// $("whichPrice").addEventListener("input", (e) => { $("pl").innerText = (<any>e).target.value; filterByPrice })
-// $("whichPrice").addEventListener("input", filterByPrice)
+function mouseMove(e: any) {
+    currentMousePosition = new Vector(e.clientX, e.clientY)
+}
+function mouseClicked(e: any) {
+    clickCount += 1
+    if (clickCount == 1) {
+        clickedMousePosition1 = new Vector(e.clientX, e.clientY)
+    }
+    if (clickCount == 2) {
+        clickedMousePosition2 = new Vector(e.clientX, e.clientY)
+        let db = Vector.distanceBetween(clickedMousePosition1, clickedMousePosition2)
+        createCircle(db)
+        clickCount = 0
+    }
+}
+let ukMap = $("ukMap")
+let ukMapContainer = $("ukMapContainer")
+// Not completed!
+function createCircle(radius: string, cx: string, cy: string) {
+    const svgns = "http://www.w3.org/2000/svg"
+    const svg = $("svg")
+    let circle = document.createElementNS(svgns, "circle")
+    circle.setAttribute("cx", cx)
+    circle.setAttribute("cy", cy)
+    circle.setAttribute("r", radius)
+    circle.setAttribute("fill", "red")
+    circle.classList.add("circle")
+    svg.appendChild(circle)
+}
 
+ukMapContainer.addEventListener("mousemove", mouseMove)
+ukMapContainer.addEventListener("click", mouseClicked)
 
-
-// localStorage.clear()

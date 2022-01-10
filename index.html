@@ -11,13 +11,19 @@
 </head>
 
 <body>
+    <div class="ukmapContainer" id="ukMapContainer">
+        <img src="ukMap.jpg" alt="Map of the UK" class="mapUK" id="ukMap">
+        <svg id="svg" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 400 400">
+        </svg>
+    </div>
+
+
     <div id="filter">
         <div class="colour">
             <input type="checkbox" id="whichColor" name="red" value=""> <label for="red">Red</label> <br>
             <input type="checkbox" id="whichColor" name="blue" value=""><label for="blue">Blue</label> <br>
             <input type="checkbox" id="whichColor" name="white" value=""><label for="white">White</label> <br>
         </div>
-
 
         <div id="manufacturer">
 
@@ -31,6 +37,7 @@
             <input type="checkbox" id="nissan" name="nissan" value=""><label for="nissan">Nissan</label><br>
 
         </div>
+
 
         <div id="price">
             <label for="" id="pl">
