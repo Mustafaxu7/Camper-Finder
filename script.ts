@@ -140,7 +140,7 @@ function mouseClicked(e: any) {
     if (clickCount == 2) {
         clickedMousePosition2 = new Vector(e.clientX, e.clientY)
         let db = Vector.distanceBetween(clickedMousePosition1, clickedMousePosition2)
-        createCircle(db)
+        // createCircle(db.toString(), clickedMousePosition1, clickedMousePosition2)
         clickCount = 0
     }
 }
