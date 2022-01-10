@@ -1,42 +1,48 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-/* #filter{
-    
-} */
-body{
-    font-family:arial;
-    font-size:13px
+h1 {
+  font-size: 1.5rem;
+  text-align: center;
 }
-
-.holder{
-    background-color:rgba(60,60,180);
-    display:flex;
-    flex-wrap:wrap;
-    justify-content: center;
+body {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 13px;
+  margin: auto;
 }
 
-h1{
-    font-size:1.5rem
+.holder {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  grid-template-columns: repeat(3, 1fr);
 }
 
-
-.card{
-    width:200px;
-    min-height:100px;
-    background-color: rgb(200,200,255,0.6);
-    margin:10px;
-    padding:5px;
-    border-radius:3px;
-    border:1px solid white;
-    box-shadow:10px 10px 10px rgba(0,0,0,.2);
+.card {
+  background-color: rgb(200, 200, 255, 0.6);
+  margin: 30px;
+  padding: 5px;
+  width: 250px;
+  height: 250px;
+  border-radius: 3px;
+  border: 1px solid white;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  place-self: center;
 }
 
+.colorSquare {
+  width: 30px;
+  height: 30px;
+}
+img {
+  justify-content: center;
+}
 
-.colorSquare{
-    width:30px;
-    height:30px;
+#filter {
+  position: relative;
+  border: 1px solid #000000;
+  width: 100%;
 }
