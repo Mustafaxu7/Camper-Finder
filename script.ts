@@ -35,11 +35,7 @@ if (vans == null) {
     saveVans()
 }
 
-
 //cars.sort((a,b)=>a.price-b.price) 
-
-let whichColour = $("whichColor") //grabs the dropdown box
-whichColour.addEventListener("change", filterByColour)
 
 let holder: HTMLElement = document.getElementById("holder")!
 
@@ -83,10 +79,11 @@ function renderVans(results: Van[]) {
     }
 }
 
+
 function $(id: string): HTMLElement {
     let e = document.getElementById(id) //QuerySelector / QuerySelectorAll
     if (e == null) {
-        alert(`No such element ${id}`)
+        alert('not such a element ${id}')
     }
     return e!
 }
@@ -99,7 +96,7 @@ function generateRandomVans(make: any, numVans: number) {
         let makeAndModel = pickName.split(".")[0]
         let make = makeAndModel.split("_")[0]
         let model = makeAndModel.split("_")[1]
-        vans.push(new Van(make, model, pickName, Math.round(Math.random() * 1000), colours[Math.floor(Math.random() * colours.length)], Math.floor(Math.random() * 10000), { x: 10, y: 20 }, features[Math.random() * features.length]))
+        vans.push(new Van(make, model, pickName, Math.round(Math.random() * 10000), colours[Math.floor(Math.random() * colours.length)], Math.floor(Math.random() * 10000), { x: 10, y: 20 }, features[Math.random() * features.length]))
     }
     return vans  //send back the 'complete' list of Vans
 }
@@ -110,24 +107,34 @@ function pickFrom(list: string[]) {
     let r = Math.floor(Math.random() * list.length)  // generate a random number between 0 and the list length (-1)
     return list[r]  //return the chosen item
 }
-function randomInteger(max: number) {  //Returns a number between 1 and max (inclusive)
+function randomInteger(max: number) {
     return Math.floor(Math.random() * max) + 1
 }
-function filterByColour() {
-    vans = vans.filter((c) => c.colour == (<HTMLSelectElement>$('whichColour')).value)
+
+// filters functions 
+
+function filterBycolour(colour: string) {
+    vans = vans.filter((v) => v.colour == colour)
     renderVans(vans)
 }
 function filterByPrice() {
-    vans = vans.filter((v) => v.price <= parseInt((<HTMLInputElement>$('whichPrice')).value))
+    $('priceText').innerText = ((<HTMLInputElement>$('what-Price')).value)
+    vans = vans.filter((v) => v.price <= parseInt((<HTMLInputElement>$('what-Price')).value))
+
     renderVans(vans)
 }
+
+function filterByFeature(feature: string) {
+    vans = vans.filter((v) => (v.features == feature))
+
+}
+
 function img(fileName: string): HTMLImageElement {
     let img = document.createElement("img");
     img.src = fileName;
     return img;
 }
 
-$("whichColor").addEventListener("click", filterByColour)
 
 function mouseMove(e: any) {
     currentMousePosition = new Vector(e.clientX, e.clientY)
@@ -158,7 +165,70 @@ function createCircle(radius: string, cx: string, cy: string) {
     circle.classList.add("circle")
     svg.appendChild(circle)
 }
+// Creating DOM Input Checkbox 
+
+function domColorCheckboxes() {
+
+    for (let i = 0; i < colours.length; i++) {
+
+        let colourDiv = $("colour");
+
+        let colorInput = document.createElement('input');
+
+        colorInput.type = "checkbox"
+        colorInput.name = colours[i]
+        colorInput.value = colours[i]
+        colorInput.classList.add('colorCheckbox')
+        colorInput.id = 'whichColor'
+        colorInput.addEventListener("click", () => filterBycolour(colours[i]))
+
+        // creating label for colorInput
+        let label = document.createElement('label');
+        label.htmlFor = colours[i];
+
+        label.appendChild(document.createTextNode(colours[i]));
+
+        colourDiv.appendChild(colorInput);
+        colourDiv.appendChild(label);
+    }
+
+}
+
+domColorCheckboxes()
 
 ukMapContainer.addEventListener("mousemove", mouseMove)
 ukMapContainer.addEventListener("click", mouseClicked)
+
+function domfeatureCheckboxes() {
+
+    for (let i = 0; i < features.length; i++) {
+
+        let featureDiv = $("features");
+
+        let featureInput = document.createElement('input');
+
+        featureInput.type = "checkbox"
+        featureInput.name = features[i]
+        featureInput.value = features[i]
+        featureInput.classList.add('featuresCheckbox')
+        featureInput.id = 'whichFeature'
+        featureInput.addEventListener("click", () => filterBycolour(features[i]))
+
+        // creating label for featureInput
+        let label = document.createElement('label');
+        label.htmlFor = features[i];
+
+        label.appendChild(document.createTextNode(features[i]));
+
+        featureDiv.appendChild(featureInput);
+        featureDiv.appendChild(label);
+    }
+
+}
+
+domfeatureCheckboxes()
+
+// $("whichPrice").addEventListener("input", (e) => { $("priceValue").innerText = (<any>e).target.value; filterByPrice })
+$('what-Price').addEventListener('change', filterByPrice)
+
 
