@@ -31,7 +31,6 @@ body {
   border-radius: 3px;
   border: 1px solid white;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-
 }
 body {
     -webkit-tap-highlight-color: transparent;
@@ -51,8 +50,8 @@ body {
     height:30px;
 }
 .mapUK {
-    width: 50vw;
-    height: 50vh;
+    width: 550px;
+    height: 650px;
 }
 .ukMapContainer {
     position: relative;
@@ -61,8 +60,8 @@ svg {
     position: absolute;
     top: 0%;
     left: 0%;
-    width: 50vw;
-    height: 50vh;
+    width: 550px;
+    height: 650px;
 }
 .colorSquare {
   width: 30px;
