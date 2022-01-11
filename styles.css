@@ -12,7 +12,7 @@ h1 {
 body {
   font-family: "Nunito Sans", sans-serif;
   font-size: 13px;
-  display: flex;
+  /* display: flex; */
 }
 
 .holder {
@@ -63,9 +63,6 @@ svg {
     width: 550px;
     height: 650px;
 }
-/* .savedCircles {
-  display: none;
-} */
 .mapUK {
     width: 550px;
     height: 650px;

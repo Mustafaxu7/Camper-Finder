@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Camper Finder</title>
+
+    <script src="functions.js" defer></script>
     <script src="script.js" defer></script>
     <link rel='stylesheet' href='styles.css'>
 </head>
@@ -40,7 +42,7 @@
                     <input type="checkbox" id="nissan" name="nissan" value=""><label for="nissan">Nissan</label><br>
                 </div>
                 <!-- Colour menu -->
-                <div class="colour">
+                <div class="colour" id="colour">
 
                     <h3 id="title">Colour</h3>
 
@@ -49,23 +51,33 @@
                     <br>
                     <input type="checkbox" id="whichColor" name="yellow" value=""><label for="yellow">Yellow</label>
                     <br>
-                    <input type="checkbox" id="whichColor" name="green" value=""><label for="green">Green</label> <br>
+                    <input type="checkbox" id="whichColor" name="green" value=""><label for="green">Green</label>
+                    <br>
                     <input type="checkbox" id="whichColor" name="blue" value=""><label for="blue">Blue</label> <br>
                     <input type="checkbox" id="whichColor" name="violet" value=""><label for="violet">Violet</label>
                     <br>
-                    <input type="checkbox" id="whichColor" name="white" value=""><label for="white">White</label> <br>
-                    <input type="checkbox" id="whichColor" name="black" value=""><label for="black">Black</label> <br>
+                    <input type="checkbox" id="whichColor" name="white" value=""><label for="white">White</label>
+                    <br>
+                    <input type="checkbox" id="whichColor" name="black" value=""><label for="black">Black</label>
+                    <br>
                     <input type="checkbox" id="whichColor" name="Gray" value=""><label for="Gray">Gray</label> <br>
                 </div>
 
                 <!-- Price Menu -->
+                <!-- <div id="price">
+
+                        <h3 id="title">Price</h3>
+
+                        <label for="" id="pl">
+                            <input type="range" id="what-Price" min="1000" max="100000">
+                        </label>
+                    </div> -->
                 <div id="price">
-
-                    <h3 id="title">Price</h3>
-
-                    <label for="" id="pl">
-                        <input type="range" id="whichPrice" min="1000" max="100000">
-                    </label>
+                    <!-- <input type="number" id="min-Price" values="min" placeholder="Min Price"><label for="Min"></label>
+                                <input type="number" id="max-Price " values="max" placeholder="Max Price"><label for="max"></label> -->
+                    <input type="range" id="what-Price" name="price" min="0" max="1000" values="0"> <label
+                        for="price"></label>
+                    <p>Value: <span id="priceText"> </span> </p>
                 </div>
 
                 <!-- Features Menu -->
@@ -76,8 +88,10 @@
                     <input type="checkbox" id="automatic" name="automatic" value=""><label
                         for="automatic">Automatic</label><br>
                     <input type="checkbox" id="manual" name="manual" value=""><label for="manual">Manual</label><br>
-                    <input type="checkbox" id="fixed" name="fixed" value=""><label for="fixed">Fixed roof</label><br>
-                    <input type="checkbox" id="popup" name="popup" value=""><label for="popup">Pop-up roof</label><br>
+                    <input type="checkbox" id="fixed" name="fixed" value=""><label for="fixed">Fixed
+                        roof</label><br>
+                    <input type="checkbox" id="popup" name="popup" value=""><label for="popup">Pop-up
+                        roof</label><br>
                     <input type="checkbox" id="fridge" name="fridge" value=""><label for="fridge">Fridge</label><br>
                     <input type="checkbox" id="gas-cooktop" name="gas-cooktop" value=""><label for="gas-cooktop">Gas
                         cooktop</label><br>
@@ -95,9 +109,11 @@
                         Toilet</label><br>
                     <input type="checkbox" id="power" name="power" value=""><label for="power">Internal power
                         system</label><br>
-                    <input type="checkbox" id="usb" name="usb" value=""><label for="usb">USB charging points</label><br>
+                    <input type="checkbox" id="usb" name="usb" value=""><label for="usb">USB charging
+                        points</label><br>
                     <input type="checkbox" id="ac" name="ac" value=""><label for="ac">AC</label><br>
-                    <input type="checkbox" id="seats" name="seats" value=""><label for="seats">Travel seats</label><br>
+                    <input type="checkbox" id="seats" name="seats" value=""><label for="seats">Travel
+                        seats</label><br>
                 </div>
             </div>
         </div>
