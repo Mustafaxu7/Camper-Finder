@@ -9,7 +9,7 @@ let colours = "red,orange,yellow,green,blue,violet,black,white,gray".split(",")
 let makes: any = {}
 let features = ["Fixed Roof", "Pop-Up Roof", "Fridge", "Propane Gas Cooktop", "Electric Cooktop", "Grill", "Propane Gas Powered Water Heater", "Kitchen", "AC", "Bed", "Portable Toilet", "Internal Power System", "USB Charging Points", "Folding Dining Table", "Manual", "Automatic", "Travel Seats"]
 makes.Volkswagen = "Caddy, California, Classic, Kombi, Trendline".split(",")
-makes.Ford = "Transit, Tourneo, errier, Panama, Kombi".split(",")
+makes.Ford = "Transit, Tourneo, Errier, Panama, Kombi".split(",")
 makes.Vauxhall = "Bedford, Midi, Movano, Turbo, Vivaro".split(",")
 makes.Fiat = "Ducato, Randger, Swift, Talento, Trigano".split(",")
 makes.Nissan = "NV200, ENV200, Primastar, Elgrand, Elgrande".split(",")
@@ -123,6 +123,23 @@ $("whichColor").addEventListener("click", filterByColour)
 // $("whichPrice").addEventListener("input", (e) => { $("pl").innerText = (<any>e).target.value; filterByPrice })
 // $("whichPrice").addEventListener("input", filterByPrice)
 
-
-
 // localStorage.clear()
+
+
+let modal = document.querySelector(".modal");
+let trigger = document.querySelector(".trigger");
+let closeButton = document.querySelector(".close-button");
+
+function toggleModal() {
+    modal!.classList.toggle("show-modal");
+}
+
+function windowOnClick(event:any) {
+    if (event.target === modal) {
+        toggleModal();
+    }
+}
+
+trigger!.addEventListener("click", toggleModal);
+closeButton!.addEventListener("click", toggleModal);
+window.addEventListener("click", windowOnClick);
