@@ -3,22 +3,23 @@
   margin: 0;
   padding: 0;
 }
+
 h1 {
   font-size: 1.5rem;
-  text-align: center;
+  /* text-align: center; */
 }
+
 body {
   font-family: "Nunito Sans", sans-serif;
   font-size: 13px;
-  margin: auto;
+  display: flex;
 }
 
 .holder {
   display: grid;
   justify-content: center;
-  align-content: center;
-  align-self: center;
   grid-template-columns: repeat(3, 1fr);
+  position: relative;
 }
 
 .card {
@@ -30,7 +31,7 @@ body {
   border-radius: 3px;
   border: 1px solid white;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-  place-self: center;
+
 }
 body {
     -webkit-tap-highlight-color: transparent;
@@ -65,14 +66,29 @@ svg {
 }
 .colorSquare {
   width: 30px;
-  height: 30px;
+  height: 20px;
 }
 img {
   justify-content: center;
+  width: 100px;
+  height: 150px;
 }
 
 #filter {
   position: relative;
   border: 1px solid #000000;
-  width: 100%;
+  border-radius: 3px;
+  width: 226px;
+  height: 63em;
+  line-height: 1.6em;
+}
+
+div {
+  margin: 8px;
+}
+
+input[type="checkbox"] {
+  display: inline-block;
+  width: 20px;
+  padding-left: 10px;
 }
