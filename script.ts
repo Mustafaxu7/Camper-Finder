@@ -8,11 +8,11 @@ class Van {
 let colours = "red,orange,yellow,green,blue,violet,black,white,gray".split(",")
 let makes: any = {}
 let features = ["Fixed Roof", "Pop-Up Roof", "Fridge", "Propane Gas Cooktop", "Electric Cooktop", "Grill", "Propane Gas Powered Water Heater", "Kitchen", "AC", "Bed", "Portable Toilet", "Internal Power System", "USB Charging Points", "Folding Dining Table", "Manual", "Automatic", "Travel Seats"]
-makes.Volkswagen = "caddy, california, classic, kombi, trendline".split(",")
-makes.Ford = "transit, tourneo, terrier, panama, kombi".split(",")
-makes.Vauxhall = "bedford, midi, movano, turbo, vivaro".split(",")
-makes.Fiat = "ducato, randger, swift, talento, trigano".split(",")
-makes.Nissan = "nv200, env200, primastar, elgrand, elgrande".split(",")
+makes.Volkswagen = "Caddy, California, Classic, Kombi, Trendline".split(",")
+makes.Ford = "Transit, Tourneo, errier, Panama, Kombi".split(",")
+makes.Vauxhall = "Bedford, Midi, Movano, Turbo, Vivaro".split(",")
+makes.Fiat = "Ducato, Randger, Swift, Talento, Trigano".split(",")
+makes.Nissan = "NV200, ENV200, Primastar, Elgrand, Elgrande".split(",")
 
 let vans: Van[] = []
 //localStorage.removeItem("vans")
