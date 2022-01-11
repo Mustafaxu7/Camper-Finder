@@ -50,7 +50,8 @@ body {
     height:30px;
 }
 .mapUK {
-    width: 100vw;
+    width: 50vw;
+    height: 50vh;
 }
 .ukMapContainer {
     position: relative;
@@ -58,6 +59,9 @@ body {
 svg {
     position: absolute;
     top: 0%;
+    left: 0%;
+    width: 50vw;
+    height: 50vh;
 }
 .colorSquare {
   width: 30px;

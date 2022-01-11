@@ -12,10 +12,28 @@ class Vector {
         return this.calcHypo(Math.abs(b.x - a.x), Math.abs(b.y - a.y));
     }
 }
+class Circle {
+    constructor(public radius: number, public cx: number, public cy: number, public id: string) { }
+    addCircle() {
+        const svgns = "http://www.w3.org/2000/svg"
+        let circle: SVGCircleElement = document.createElementNS(svgns, "circle")
+        const svg = $("svg")
+        circle.setAttribute("cx", this.cx.toString())
+        circle.setAttribute("cy", this.cy.toString())
+        circle.setAttribute("r", this.radius.toString())
+        circle.setAttribute("stroke", "black")
+        circle.setAttribute("stroke-width", "2")
+        circle.setAttribute("fill", "none")
+        circle.classList.add("circle")
+        svg.appendChild(circle)
+    }
+}
+let isDown = false
 let currentMousePosition = new Vector(0, 0)
 let clickedMousePosition1 = new Vector(0, 0)
 let clickedMousePosition2 = new Vector(0, 0)
 let clickCount = 0
+let circles: Circle[] = []
 
 let colours = "red,orange,yellow,green,blue,violet,black,white,gray".split(",")
 let makes: any = {}
@@ -35,6 +53,12 @@ if (vans == null) {
     saveVans()
 }
 
+// circles = JSON.parse(localStorage.getItem("circles")!);
+// if (circles == null) {
+//     createCircle("5", "1", "2")
+//     saveCircles()
+// }
+
 //cars.sort((a,b)=>a.price-b.price) 
 
 let holder: HTMLElement = document.getElementById("holder")!
@@ -45,6 +69,11 @@ function saveVans() {
     let vansString = JSON.stringify(vans)  //Converts our 'complex' array of car objects into a single string 
     localStorage.setItem("vans", vansString)  //permanently save (so the user can close their browser, or even swtich off - and come back to the came cars)
 }
+
+// function saveCircles() {
+//     let circlesString = JSON.stringify(circles)  //Converts our 'complex' array of car objects into a single string 
+//     localStorage.setItem("circles", circlesString)  //permanently save (so the user can close their browser, or even swtich off - and come back to the came cars)
+// }
 
 function renderVans(results: Van[]) {
 
@@ -87,7 +116,6 @@ function $(id: string): HTMLElement {
     }
     return e!
 }
-
 function generateRandomVans(make: any, numVans: number) {
     let vanTypes: string[] = "fiat_ducato.png,fiat_randger.png,fiat_swift.png,fiat_talento.png,fiat_trigano.png,ford_kombi.png,ford_panama.png,ford_terrier.jpg,ford_tourneo.jpg,ford_transit.jpg,nissan_elgrand.png,nissan_elgrande.jpg,nissan_env200.png,nissan_nv200.png,nissan_primastar.jpg,vauxhall_bedford.jpg,vauxhall_midi.jpg,vauxhall_movano.jpeg,vauxhall_turbo.jpg,vauxhall_vivaro.png,vw_caddy.png,vw_california.png,vw_classic.jpg,vw_kombi.png,vw_trendline.jpg".split(",")
     let vans = []
@@ -135,36 +163,29 @@ function img(fileName: string): HTMLImageElement {
     return img;
 }
 
+// At the moment circles are appending as long as we are moving the mouse 
 
+function mouseDown(e: any) {
+    clickedMousePosition1 = new Vector(e.clientX, e.clientY)
+    circles.push(new Circle(2, clickedMousePosition1.x, clickedMousePosition1.y, "London"))
+    isDown = true
+}
 function mouseMove(e: any) {
     currentMousePosition = new Vector(e.clientX, e.clientY)
-}
-function mouseClicked(e: any) {
-    clickCount += 1
-    if (clickCount == 1) {
-        clickedMousePosition1 = new Vector(e.clientX, e.clientY)
-    }
-    if (clickCount == 2) {
-        clickedMousePosition2 = new Vector(e.clientX, e.clientY)
-        let db = Vector.distanceBetween(clickedMousePosition1, clickedMousePosition2)
-        // createCircle(db.toString(), clickedMousePosition1, clickedMousePosition2)
-        clickCount = 0
+    let currentRad = Vector.distanceBetween(clickedMousePosition1, currentMousePosition)
+    circles[circles.length - 1].radius = currentRad
+    for (let i = 0; i < circles.length; i++) {
+        circles[i].addCircle()
     }
 }
+function mouseUp() {
+    isDown = false
+    return isDown
+}
+
 let ukMap = $("ukMap")
 let ukMapContainer = $("ukMapContainer")
-// Not completed!
-function createCircle(radius: string, cx: string, cy: string) {
-    const svgns = "http://www.w3.org/2000/svg"
-    const svg = $("svg")
-    let circle = document.createElementNS(svgns, "circle")
-    circle.setAttribute("cx", cx)
-    circle.setAttribute("cy", cy)
-    circle.setAttribute("r", radius)
-    circle.setAttribute("fill", "red")
-    circle.classList.add("circle")
-    svg.appendChild(circle)
-}
+
 // Creating DOM Input Checkbox 
 
 function domColorCheckboxes() {
@@ -197,7 +218,9 @@ function domColorCheckboxes() {
 domColorCheckboxes()
 
 ukMapContainer.addEventListener("mousemove", mouseMove)
-ukMapContainer.addEventListener("click", mouseClicked)
+ukMapContainer.addEventListener("mouseup", () => isDown = false)
+ukMapContainer.addEventListener("mousedown", mouseDown)
+
 
 function domfeatureCheckboxes() {
 
@@ -228,7 +251,12 @@ function domfeatureCheckboxes() {
 
 domfeatureCheckboxes()
 
+
+
+
 // $("whichPrice").addEventListener("input", (e) => { $("priceValue").innerText = (<any>e).target.value; filterByPrice })
-$('what-Price').addEventListener('change', filterByPrice)
+// $('what-Price').addEventListener('change', filterByPrice)
+
+
 
 
