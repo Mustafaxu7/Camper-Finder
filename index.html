@@ -11,25 +11,31 @@
 </head>
 
 <body>
+    <div class="ukmapContainer" id="ukMapContainer">
+        <img src="ukMap.jpg" alt="Map of the UK" class="mapUK" id="ukMap">
+        <svg id="svg" xmlns="http://www.w3.org/2000/svg">
+        </svg>
+    </div>
     <button id="trigger" class="trigger">Filter</button>
     <div class="modal">
-                 <!-- Content of everything inisde the modal -->
+        <!-- Content of everything inisde the modal -->
         <div class="modal-content">
-        
-            <div id="filter"> 
+
+            <div id="filter">
                 <h1 class="title">Filter</h1>
                 <span class="close-button">&times;</span>
                 <!-- manufacturer menu -->
                 <div id="manufacturer">
-                
+
                     <h3 id="title">Manufacturer</h3>
 
                     <input type="checkbox" id="volkswagen" name="volkswagen" value=""><label
-                    for="volkswagen">Volkswagen</label><br>
+                        for="volkswagen">Volkswagen</label><br>
                     <input type="checkbox" id="ford" name="ford" value=""><label for="ford">Ford</label><br>
                     <input type="checkbox" id="mercedes" name="mercedes" value=""><label
-                    for="mercedes">Mercedes-Benz</label><br>
-                    <input type="checkbox" id="vauxhall" name="vauxhall" value=""><label for="vauxhall">Vauxhall</label><br>
+                        for="mercedes">Mercedes-Benz</label><br>
+                    <input type="checkbox" id="vauxhall" name="vauxhall" value=""><label
+                        for="vauxhall">Vauxhall</label><br>
                     <input type="checkbox" id="fiat" name="fiat" value=""><label for="fiat">Fiat</label><br>
                     <input type="checkbox" id="nissan" name="nissan" value=""><label for="nissan">Nissan</label><br>
                 </div>
@@ -39,11 +45,14 @@
                     <h3 id="title">Colour</h3>
 
                     <input type="checkbox" id="whichColor" name="red" value=""><label for="red">Red</label> <br>
-                    <input type="checkbox" id="whichColor" name="orange" value=""><label for="orange">Orange</label> <br>
-                    <input type="checkbox" id="whichColor" name="yellow" value=""><label for="yellow">Yellow</label> <br>
+                    <input type="checkbox" id="whichColor" name="orange" value=""><label for="orange">Orange</label>
+                    <br>
+                    <input type="checkbox" id="whichColor" name="yellow" value=""><label for="yellow">Yellow</label>
+                    <br>
                     <input type="checkbox" id="whichColor" name="green" value=""><label for="green">Green</label> <br>
                     <input type="checkbox" id="whichColor" name="blue" value=""><label for="blue">Blue</label> <br>
-                    <input type="checkbox" id="whichColor" name="violet" value=""><label for="violet">Violet</label> <br>
+                    <input type="checkbox" id="whichColor" name="violet" value=""><label for="violet">Violet</label>
+                    <br>
                     <input type="checkbox" id="whichColor" name="white" value=""><label for="white">White</label> <br>
                     <input type="checkbox" id="whichColor" name="black" value=""><label for="black">Black</label> <br>
                     <input type="checkbox" id="whichColor" name="Gray" value=""><label for="Gray">Gray</label> <br>
@@ -59,9 +68,9 @@
                     </label>
                 </div>
 
-                     <!-- Features Menu -->
+                <!-- Features Menu -->
                 <div id="features">
-                    
+
                     <h3 id="title">Features</h3>
 
                     <input type="checkbox" id="automatic" name="automatic" value=""><label
@@ -75,8 +84,10 @@
                     <input type="checkbox" id="electric" name="electric" value=""><label for="electric">Electric
                         cooktop</label><br>
                     <input type="checkbox" id="grill" name="grill" value=""><label for="grill">Grill</label><br>
-                    <input type="checkbox" id="gas-heater" name="gas-heater" value=""><label for="gas-heater">Water heater</label><br>
-                    <input type="checkbox" id="kitchen" name="kitchen" value=""><label for="kitchen">Kitchen </label><br>
+                    <input type="checkbox" id="gas-heater" name="gas-heater" value=""><label for="gas-heater">Water
+                        heater</label><br>
+                    <input type="checkbox" id="kitchen" name="kitchen" value=""><label for="kitchen">Kitchen
+                    </label><br>
                     <input type="checkbox" id="table" name="table" value=""><label for="table">Folding dining
                         table</label><br>
                     <input type="checkbox" id="bed" name="bed" value=""><label for="bed">Bed</label><br>
@@ -91,7 +102,8 @@
             </div>
         </div>
     </div>
-<main id='holder' class="holder"></main>
+    <main id='holder' class="holder"></main>
 
 </body>
+
 </html>
