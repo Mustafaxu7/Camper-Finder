@@ -108,7 +108,6 @@ function renderVans(results: Van[]) {
         color.style.backgroundColor = results[i].colour
     }
 }
-
 // ALL ABOUT INCREASING USER EXPERIENCE (USER INTERFACE)
 
 function toggleModal() {
@@ -128,7 +127,7 @@ let selectedProperties: any = []
 function filterByColour(colour: string, include: boolean) {
     if (include) {
         selectedProperties.push(colour)
-        renderFilteredVans()
+        // renderFilteredVans()
     } else {
         let index = selectedProperties.indexOf(colour)
         selectedProperties.splice(index, 1)

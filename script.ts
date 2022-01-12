@@ -30,6 +30,9 @@ class Van {
     constructor(public make: string, public model: string, public picture: string, public price: number, public colour: string, public mileage: number, public location: object, public features: string) {
     }
 }
+// class Feature {
+//     constructor(public feature: string, )
+// }
 
 // GETTING ALL THE ID'S OF ELEMENTS 
 
