@@ -30,27 +30,39 @@ class Van {
     constructor(public make: string, public model: string, public picture: string, public price: number, public colour: string, public mileage: number, public location: object, public features: string) {
     }
 }
+
+// GETTING ALL THE ID'S OF ELEMENTS 
+
 let ukMapContainer = $("ukMapContainer")
+let ukMap = $("ukMap")
 let whichColour = $("whichColor") //grabs the dropdown box
 let holder: HTMLElement = $("holder")!
 $('what-Price').addEventListener('change', filterByPrice)
+
+// EMPTY ARRAYS, OBJECTS, BOOLEANS AND VARIABLES
+
 let makes: any = {}
 let vans: Van[] = []
 let circles: any[] = []
-let ukMap = $("ukMap")
-let colours = "red,orange,yellow,green,blue,violet,black,white,gray".split(",")
-let features = ["Fixed Roof", "Pop-Up Roof", "Fridge", "Propane Gas Cooktop", "Electric Cooktop", "Grill", "Propane Gas Powered Water Heater", "Kitchen", "AC", "Bed", "Portable Toilet", "Internal Power System", "USB Charging Points", "Folding Dining Table", "Manual", "Automatic", "Travel Seats"]
-makes.Volkswagen = "Caddy, California, Classic, Kombi, Trendline".split(",")
-makes.Ford = "Transit, Tourneo, Errier, Panama, Kombi".split(",")
-makes.Vauxhall = "Bedford, Midi, Movano, Turbo, Vivaro".split(",")
-makes.Fiat = "Ducato, Randger, Swift, Talento, Trigano".split(",")
-makes.Nissan = "NV200, ENV200, Primastar, Elgrand, Elgrande".split(",")
 let isDown = true
 let currentMousePosition = new Vector(0, 0)
 let clickedMousePosition1 = new Vector(0, 0)
 let clickedMousePosition2 = new Vector(0, 0)
 let clickCount = 0
 let id = 0
+
+// ARRAYS CREATED BY SPLITTING STRINGS
+
+let colours = "Red,Orange,Yellow,Green,Blue,Violet,Black,White,Gray".split(",")
+let features = "Fixed Roof,Pop-Up Roof,Fridge,Propane Gas Cooktop,Electric Cooktop,Grill,Propane Gas Powered Water Heater,Kitchen,AC,Bed,Portable Toilet,Internal Power System,USB Charging Points,Folding Dining Table,Manual,Automatic,Travel Seats".split(",")
+makes.Volkswagen = "Caddy, California, Classic, Kombi, Trendline".split(",")
+makes.Ford = "Transit, Tourneo, Errier, Panama, Kombi".split(",")
+makes.Vauxhall = "Bedford, Midi, Movano, Turbo, Vivaro".split(",")
+makes.Fiat = "Ducato, Randger, Swift, Talento, Trigano".split(",")
+makes.Nissan = "NV200, ENV200, Primastar, Elgrand, Elgrande".split(",")
+
+// EMPTY VALUES
+
 domfeatureCheckboxes()
 domColorCheckboxes()
 vans = JSON.parse(localStorage.getItem("vans")!);
@@ -58,12 +70,9 @@ if (vans == null) {
     vans = generateRandomVans(makes, 200)
     saveVans()
 }
-
-whichColour.addEventListener("change", filterByColour)
-
 renderVans(vans)
-
-$("whichColor").addEventListener("click", filterByColour)
+// whichColor.addEventListener("change", filterByColour)
+// $("whichColor").addEventListener("click", () => filterByColour($("whichColor".value, false))
 
 let modal = document.querySelector(".modal");
 let trigger = document.querySelector(".trigger");
