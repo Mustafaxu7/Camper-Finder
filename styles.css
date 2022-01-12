@@ -19,8 +19,9 @@ body {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(3, 1fr);
-  position: relative;
+  
 }
+
 
 .card {
   background-color: rgb(200, 200, 255, 0.6);
@@ -92,12 +93,7 @@ body {
   margin: 15px;
 }
 
-.holder {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(3, 1fr);
-  position: relative;
-}
+
 
 .card {
   background-color: rgb(200, 200, 255, 0.6);
@@ -148,6 +144,7 @@ img {
   padding: 1rem 1.5rem;
   width: 15rem;
   border-radius: 0.5rem;
+  z-index: 10;
 }
 
 #trigger {

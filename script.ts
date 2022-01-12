@@ -26,6 +26,7 @@ class Circle {
         svg.appendChild(circle)
     }
 }
+
 class Van {
     constructor(public make: string, public model: string, public picture: string, public price: number, public colour: string, public mileage: number, public location: object, public features: string) {
     }
@@ -66,14 +67,18 @@ makes.Nissan = "NV200, ENV200, Primastar, Elgrand, Elgrande".split(",")
 
 // EMPTY VALUES
 
-domfeatureCheckboxes()
-domColorCheckboxes()
+
 vans = JSON.parse(localStorage.getItem("vans")!);
 if (vans == null) {
-    vans = generateRandomVans(makes, 200)
+    vans = generateRandomVans(makes, 100)
     saveVans()
 }
 renderVans(vans)
+
+domColorCheckboxes()
+domfeatureCheckboxes()
+
+
 // whichColor.addEventListener("change", filterByColour)
 // $("whichColor").addEventListener("click", () => filterByColour($("whichColor".value, false))
 
