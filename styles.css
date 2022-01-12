@@ -50,8 +50,8 @@ body {
     height:30px;
 }
 .mapUK {
-    width: 550px;
-    height: 650px;
+    width: 50px;
+    height: 0px;
 }
 .ukMapContainer {
     position: relative;
@@ -60,7 +60,7 @@ svg {
     position: absolute;
     top: 0%;
     left: 0%;
-    width: 550px;
+    width: 50px;
     height: 650px;
 }
 .mapUK {
@@ -97,7 +97,6 @@ body {
   justify-content: center;
   grid-template-columns: repeat(3, 1fr);
   position: relative;
-  margin-top: 700px;
 }
 
 .card {
