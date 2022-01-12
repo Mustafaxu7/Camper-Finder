@@ -32,9 +32,11 @@ body {
   border: 1px solid white;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
+
 body {
     -webkit-tap-highlight-color: transparent;
 }
+
 .card{
     width:200px;
     min-height:100px;
@@ -45,17 +47,21 @@ body {
     border:1px solid white;
     box-shadow:10px 10px 10px rgba(0,0,0,.2);
 }
+
 .colorSquare{
     width:30px;
     height:30px;
 }
+
 .mapUK {
     width: 550px;
     height: 650px;
 }
+
 .ukMapContainer {
     position: relative;
 }
+
 svg {
     position: absolute;
     top: 0%;
@@ -63,13 +69,16 @@ svg {
     width: 550px;
     height: 650px;
 }
+
 .mapUK {
     width: 550px;
     height: 650px;
 }
+
 .ukMapContainer {
     position: relative;
 }
+
 svg {
     position: absolute;
     top: 0%;
@@ -77,6 +86,7 @@ svg {
     width: 550px;
     height: 650px;
 }
+
 h1 {
   font-size: 1.5rem;
   text-align: center;
@@ -176,8 +186,6 @@ img {
   position: absolute;
   bottom: 0;
   left: 0;
-  
-  
 }
 
 .close-button:hover {
@@ -207,6 +215,7 @@ img {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   background-color: white;
 }
+
 input[type="checkbox"] {
   display: inline-block;
   width: 20px;
