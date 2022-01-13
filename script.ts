@@ -17,19 +17,20 @@ class Circle {
         svg.appendChild(circle)
     }
 }
+
 class Van {
     constructor(public make: string, public model: string, public picture: string, public price: number, public colour: string, public mileage: number, public location: Vector, public features: string) {
     }
 }
-// class Feature {
-//     constructor(public feature: string, )
-// }
+
+
+
+
 
 // GETTING ALL THE ID'S OF ELEMENTS 
-
 let ukMapContainer = $("ukMapContainer")
 let ukMap = $("ukMap")
-let whichColour = $("whichColor") //grabs the dropdown box
+
 let holder: HTMLElement = $("holder")!
 $('what-Price').addEventListener('change', filterByPrice)
 
@@ -44,10 +45,29 @@ let clickedMousePosition2 = new Vector(0, 0)
 let clickCount = 0
 let id = 1
 
+let features: Record<string, string> = {
+    A: "Fixed Roof",
+    B: 'Pop-Up Roof',
+    C: 'Fridge',
+    D: "Propane Gas",
+    E: "Cooktop",
+    F: "Electric Cooktop",
+    G: "Grill",
+    H: "Kitchen",
+    I: "AC",
+    J: "Bed",
+    K: "Toilet",
+    L: "Power System",
+    M: "USB Charging",
+    N: 'Folding-Table',
+    O: 'Manual',
+    P: 'Automatic',
+    Q: "Travel Seats"
+}
 // ARRAYS CREATED BY SPLITTING STRINGS
 
 let colours = "Red,Orange,Yellow,Green,Blue,Violet,Black,White,Gray".split(",")
-let features = "Fixed Roof,Pop-Up Roof,Fridge,Propane Gas Cooktop,Electric Cooktop,Grill,Propane Gas Powered Water Heater,Kitchen,AC,Bed,Portable Toilet,Internal Power System,USB Charging Points,Folding Dining Table,Manual,Automatic,Travel Seats".split(",")
+// let features = "Fixed Roof,Pop-Up Roof,Fridge,Propane Gas Cooktop,Electric Cooktop,Grill,Propane Gas Powered Water Heater,Kitchen,AC,Bed,Portable Toilet,Internal Power System,USB Charging Points,Folding Dining Table,Manual,Automatic,Travel Seats".split(",")
 makes.Volkswagen = "Caddy, California, Classic, Kombi, Trendline".split(",")
 makes.Ford = "Transit, Tourneo, Errier, Panama, Kombi".split(",")
 makes.Vauxhall = "Bedford, Midi, Movano, Turbo, Vivaro".split(",")
@@ -56,22 +76,47 @@ makes.Nissan = "NV200, ENV200, Primastar, Elgrand, Elgrande".split(",")
 
 // EMPTY VALUES
 
-domfeatureCheckboxes()
-domColorCheckboxes()
+
 vans = JSON.parse(localStorage.getItem("vans")!);
 if (vans == null) {
-    vans = generateRandomVans(makes, 200)
+    vans = generateRandomVans(makes, 100)
     saveVans()
 }
 renderVans(vans)
-// whichColor.addEventListener("change", filterByColour)
-// $("whichColor").addEventListener("click", () => filterByColour($("whichColor".value, false))
+
+domColorCheckboxes()
+domFeatureCheckboxes()
+
+
+let filters = "price,location,colors,manufacturer,features".split(",")
 
 let modal = document.querySelector(".modal");
-let trigger = document.querySelector(".trigger");
+// let trigger = document.querySelector(".trigger");
+for (let i = 0; i < filters.length; i++) {
+    let filterButton = document.createElement("button")
+    filterButton.innerHTML = filters[i]
+    filterButton.addEventListener("click", () => filterBy(filters[i]))
+    $("filters").appendChild(filterButton)
+}
+
+function filterBy(type: string) {
+    if (type == "features") {
+        domFeatureCheckboxes()
+    }
+    if (type == "colors") {
+        domColorCheckboxes();
+    }
+
+}
+
+function showModal(section: string) {
+    // Show the modal dialog and reveal the appropriate section
+    // 
+}
+
 let closeButton = document.querySelector(".close-button");
 
-trigger!.addEventListener("click", toggleModal);
+// trigger!.addEventListener("click", toggleModal);
 closeButton!.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 if (circles == null) {
@@ -101,3 +146,10 @@ function displayAmountCircles(clickedPosition: Vector, movedPosition: Vector) {
 // displayAmountCircles()
 
 
+
+for (let i = 0; i < circles.length; i++) {
+    let normalRadius = circles[i].radius
+    let squaredRadius = Math.pow(circles[i].radius, 2)
+    let x = Math.sqrt((Math.random() * squaredRadius) + normalRadius) * Math.cos(Math.random() * 360)
+
+}
