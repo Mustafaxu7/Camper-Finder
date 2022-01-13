@@ -142,23 +142,23 @@ function windowOnClick(event: any) {
 // ALL ABOUT CREATING THE ELEMENTS FOR FILTERING AND THE FILTERING SYSTEM
 
 let filteredVans: Van[]= []
-let selectedProperties: any = []
-  
+let filteredColourVans :Van[] = []
+let selectedFeatures: any = []
+let selectedColors: string[] = []
 function filterByColour(colour:string, include: boolean) {
     if(include){
-        selectedProperties.push(colour)
+        selectedColors.push(colour)
     }else{
-       let index = selectedProperties.indexOf(colour)
-       selectedProperties.splice(index, 1)
+       let index = selectedColors.indexOf(colour)
+       selectedColors.splice(index, 1)
     }
-     
-    filteredVans = vans.filter((v) => selectedProperties.includes(v.colour) )
-
-    renderVans(vans)
-    
+  filteredVans = vans.filter((v) =>
+   selectedColors.includes(v.colour)
+    );
 }
+   
 
-let selectedFeatures: any = []
+
 function filterByFeature(features:string, include:boolean) {
     if(include){
         selectedFeatures.push(features)
@@ -167,74 +167,108 @@ function filterByFeature(features:string, include:boolean) {
         let index = selectedFeatures.indexOf(features)
         selectedFeatures.splice(index, 1)
     }
-    
-        for (let i=0; i<vans.length; i++){
-            for (let k=0; k<features.length; i++){
-               features[vans[i].features[k]]
-            }
-            
-
-
-
-    vans = vans.filter((v) => selectedFeatures.includes( ))
-    
-    
-    
+    filteredVans = vans.filter((v) => containsAllLetters(v.features, selectedFeatures) )
+    $("numberOfVans").innerHTML = `${filteredVans.length}`
+  
 }
+function containsAllLetters(a:string,b:string[]):boolean{
+    
+    let matches = 0
+    for (let i = 0; i < b.length; i++) {
+        if(a.includes(b[i])){
+           matches++
+        }
+    }
+    if(matches == b.length){
+        return true
+    }
+
+    return false
+
+
+}
+
 
 function filterByPrice() {
     $('priceText').innerText =((<HTMLInputElement>$('what-Price')).value)  
-    vans = vans.filter((v) => v.price <= parseInt((<HTMLInputElement>$('what-Price')).value ))
-    
-    renderVans(vans)
-    
+    filteredVans = vans.filter((v) => v.price <= parseInt((<HTMLInputElement>$('what-Price')).value ))
+
+    vans = filteredVans
 }
 
-$('showBtn').addEventListener('click', () => renderFilteredVans())
 
-function renderFilteredVans (){
-    
-    renderVans(filteredVans)
+$('showBtn').addEventListener('click', () => {vans = filteredVans;renderVans(vans)})
+
+function countColors(color:string):number {
+    let count = 0
+    for(let i = 0; i < vans.length; i++) {
+        if(vans[i].colour == color) {
+            count++
+        }
+    }
+    return count
 }
-
+function countFeatures(feature: string): number {
+  let count = 0;
+  for (let i = 0; i < vans.length; i++) {
+    if (vans[i].features.includes(feature)) {
+      count++;
+    }
+  }
+  return count;
+}
+// function countManufacturers(make: string): number {
+//     let count = 0;
+//     for (let i = 0; i < vans.length; i++) {
+//       if (vans[i].make.includes(make)) {
+//         count++;
+//       }
+//     }
+//     return count;
+// }
 
 
 function domColorCheckboxes() {
-    for (let i = 0; i < colours.length; i++) {
-        let colourDiv = $("whichColor");
-        let colorInput = document.createElement('input');
-        colorInput.type = "checkbox"
-        colorInput.name = colours[i]
-        colorInput.value = colours[i]
-        colorInput.classList.add('colorCheckbox')
-        colorInput.id = "whichColor"
-        colorInput.addEventListener("click", (e) => filterByColour(colours[i], (<any>e.target!).checked))
-        let label = document.createElement('label');
-        label.htmlFor = colours[i];
-        label.appendChild(document.createTextNode(colours[i]));
-        let div = document.createElement("div")
-        div.appendChild(colorInput)
-        div.appendChild(label)
-        colourDiv.appendChild(div)
-    }
+  for (let i = 0; i < colours.length; i++) {
+    let matching = countColors(colours[i]);
+    let colourDiv = $("whichColor");
+    let colorInput = document.createElement("input");
+    colorInput.type = "checkbox";
+    colorInput.name = colours[i];
+    colorInput.value = colours[i];
+    colorInput.classList.add("colorCheckbox");
+    colorInput.id = "whichColor";
+    colorInput.addEventListener("click", (e) =>
+      filterByColour(colours[i], (<any>e.target!).checked)
+    );
+    let label = document.createElement("label");
+    // label.htmlFor = colours[i] + " " + matching;
+
+    label.appendChild(document.createTextNode(colours[i] + " " + matching));
+    let div = document.createElement("div");
+    div.appendChild(colorInput);
+    div.appendChild(label);
+    colourDiv.appendChild(div);
+  }
 }
 function domFeatureCheckboxes() {
     // for (let i = 0; i < features.length; i++) 
     
     for (let k in features){
-        
+        let matching = countFeatures(k);
+        console.log(matching)
         let featureDiv = $("features");
         let featureInput = document.createElement('input');
         featureInput.type = "checkbox"
         featureInput.name = <any>features[k]
-        featureInput.value = features[k]
+        featureInput.value = k
         featureInput.classList.add('featuresCheckbox')
         featureInput.id = 'whichFeature'
-        featureInput.addEventListener("click", (e) => filterByFeature(features[k], (<any>e.target!).checked))
+        featureInput.addEventListener("click", (e) => filterByFeature(k, (<any>e.target!).checked))
         let div = document.createElement("div")
         let label = document.createElement('label');
         label.htmlFor = features[k];
-        label.appendChild(document.createTextNode(features[k]));
+        label.appendChild(document.createTextNode(features[k] + " " + matching));
         div.appendChild(featureInput)
         div.appendChild(label)
         featureDiv.appendChild(div)

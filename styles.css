@@ -36,10 +36,6 @@ body {
   background-color: rgb(200, 200, 255, 0.6);
 }
 
-/* .card-features{
-  display: flex;
-  flex-direction: row;
-} */
 .colorSquare{
     width:30px;
     height:30px;
@@ -64,6 +60,8 @@ svg {
 }
 .ukMapContainer {
     position: relative;
+    width: 550px;
+    height: 650px;
 }
 svg {
     position: absolute;

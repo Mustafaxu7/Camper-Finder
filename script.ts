@@ -99,13 +99,35 @@ domColorCheckboxes()
 domFeatureCheckboxes()
 
 
-
+let filters = "price,location,colors,manufacturer,features".split(",")
 
 let modal = document.querySelector(".modal");
-let trigger = document.querySelector(".trigger");
+// let trigger = document.querySelector(".trigger");
+for(let i = 0; i < filters.length; i++) {
+    let filterButton = document.createElement("button")
+    filterButton.innerHTML = filters[i]
+    filterButton.addEventListener("click",() => filterBy(filters[i]))
+    $("filters").appendChild(filterButton)
+}
+
+function filterBy(type:string){
+    if(type == "features"){
+        domFeatureCheckboxes()
+    }
+    if (type == "colors") {
+        domColorCheckboxes();
+    }
+
+}
+
+function showModal(section: string) {
+    // Show the modal dialog and reveal the appropriate section
+    // 
+}
+
 let closeButton = document.querySelector(".close-button");
 
-trigger!.addEventListener("click", toggleModal);
+// trigger!.addEventListener("click", toggleModal);
 closeButton!.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
@@ -115,11 +137,10 @@ if (circles == null) {
 }
 
 ukMapContainer.addEventListener("mousedown", mouseDown)
+
 for (let i = 0; i < circles.length; i++) {
     let normalRadius = circles[i].radius
     let squaredRadius = Math.pow(circles[i].radius, 2)
     let x = Math.sqrt((Math.random() * squaredRadius) + normalRadius) * Math.cos(Math.random() * 360)
 
 }
-
-
