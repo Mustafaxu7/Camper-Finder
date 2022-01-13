@@ -61,7 +61,6 @@ function mouseMove(e: any) {
         for (let i = 0; i < searchCircles.length; i++) {
             $(searchCircles[searchCircles.length - 1].id).remove()
             searchCircles[searchCircles.length - 1].addCircle()
-            // $(searchCircles[searchCircles.length - 1].id).remove()
             ukMapContainer.addEventListener("mouseup", mouseUp)
         }
     }

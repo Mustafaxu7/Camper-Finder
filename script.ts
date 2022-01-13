@@ -86,6 +86,7 @@ let count = 5
 let dots: Circle[] = []
 
 function displayAmountCircles(clickedPosition: Vector, movedPosition: Vector) {
+    locationFilteredVans = []
     let radius = Vector.distanceBetween(clickedPosition, movedPosition)
     for (let i = 0; i < vans.length; i++) {
 
