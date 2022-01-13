@@ -27,7 +27,7 @@ body {
   /* justify-content: center; */
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: left center right;
-  position: relative;
+  /* position: relative; */
   justify-items: center;
   justify-content: center;
   margin-left: 50px;
