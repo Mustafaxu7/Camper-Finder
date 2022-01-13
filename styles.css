@@ -75,8 +75,7 @@ svg {
   height: 310px;
   /* border-radius: 3px; */
   /* border: 0.6px solid black; */
-  border-top: 0.1px solid gray;
-  border-bottom: 0.1px solid gray;
+  border: 0.1px solid gray;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
   z-index: -1;
   /* text-align: center; */
