@@ -35,74 +35,19 @@ body {
   /* border-top: 0.1px solid gray; */
 }
 
-.card {
-  background-color: rgb(200, 200, 255, 0.6);
-  margin: 30px;
-  padding: 5px;
-  width: 250px;
-  height: 250px;
-  border-radius: 3px;
-  border: 1px solid white;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+.colorSquare {
+  width: 30px;
+  height: 30px;
+  border: 0.1px solid black;
+  border-radius: 2px;
+  margin-top: 8px;
 }
 
-body {
-    -webkit-tap-highlight-color: transparent;
-}
-
-.card{
-    width:200px;
-    min-height:100px;
-    background-color: rgb(200,200,255,0.6);
-    margin:10px;
-    padding:5px;
-    border-radius:3px;
-    border:1px solid white;
-    box-shadow:10px 10px 10px rgba(0,0,0,.2);
-}
-
-.colorSquare{
-    width:30px;
-    height:30px;
-}
-
+/* UK MAP */
 .mapUK {
-    width: 550px;
-    height: 650px;
-}
-
-.ukMapContainer {
-    position: relative;
-}
-
-svg {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 550px;
-    height: 650px;
-}
-
-.mapUK {
-    width: 550px;
-    height: 650px;
-}
-
-.ukMapContainer {
-    position: relative;
-}
-
-svg {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 550px;
-    height: 650px;
-}
-
-h1 {
-  font-size: 1.5rem;
-  text-align: center;
+  width: 550px;
+  height: 650px;
+  /* float: right; */
 }
 
 .ukMapContainer {

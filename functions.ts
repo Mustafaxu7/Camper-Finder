@@ -216,7 +216,6 @@ function windowOnClickColour(event: any) {
 // ALL ABOUT CREATING THE ELEMENTS FOR FILTERING AND THE FILTERING SYSTEM
 
 let filteredVans: Van[] = []
-let filteredColourVans: Van[] = []
 let selectedFeatures: any = []
 let selectedColors: string[] = []
 function filterByColour(colour: string, include: boolean) {
