@@ -109,13 +109,49 @@ function renderVans(results: Van[]) {
     }
 }
 // ALL ABOUT INCREASING USER EXPERIENCE (USER INTERFACE)
-
+//   Modal
 function toggleModal() {
     modal!.classList.toggle("show-modal");
 }
 function windowOnClick(event: any) {
     if (event.target === modal) {
         toggleModal();
+    }
+}
+
+function openModal() {
+    modal2!.classList.toggle("modal-appear")
+}
+function windowInClick(event: any) {
+    if (event.target === modal2) {
+        openModal();
+    }
+}
+
+function toggleManuModal() {
+    manuModal!.classList.toggle("manu-show-modal");
+}
+function windowOnClickManu(event:any) {
+    if (event.target === manuModal) {
+        toggleManuModal();
+    }
+}
+
+function togglePriceModal() {
+    priceModal!.classList.toggle("price-show-modal")
+}
+function windowOnClickPrice(event: any) {
+    if (event.target === priceModal) {
+        togglePriceModal();
+    }
+}
+
+function toggleColourModal() {
+    colourModal!.classList.toggle("colour-show-modal")
+}
+function windowOnClickColour(event: any) {
+    if (event.target === colourModal) {
+        toggleColourModal();
     }
 }
 
