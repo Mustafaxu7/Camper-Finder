@@ -72,12 +72,10 @@ svg {
   margin: 30px;
   padding: 15px;
   width: 340px;
-  height: 310px;
-  /* border-radius: 3px; */
-  /* border: 0.6px solid black; */
-  border-top: 0.1px solid gray;
-  border-bottom: 0.1px solid gray;
+  height: 340px;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  border: 0.1px solid grey;
+  border-radius: 4px;
   z-index: -1;
   /* text-align: center; */
 }
@@ -153,9 +151,6 @@ img {
 }
 
 .close-button:hover {
-  /* border-bottom: 1.5px solid orangered;
-  cursor: pointer;
-  transition: ease-in-out; */
   background-color: darkgray;
   cursor: pointer;
   transition: ease-in-out;
@@ -213,8 +208,9 @@ img {
 
 .close-btn {
   line-height: 10px;
-  border-radius: 1px;
-  border: solid #ffffff;
+  /* border-radius: 1px; */
+  background-color: lightgrey;
+  border: 1px solid #ffffff;
   position: absolute;
   bottom: 0;
   margin-left: 650px;
@@ -227,7 +223,7 @@ img {
 }
 
 .close-btn:hover {
-  border-bottom: 1.5px solid orangered;
+  background-color: darkgray;
   cursor: pointer;
   transition: ease-in-out;
 }
@@ -402,6 +398,8 @@ input[type="checkbox"] {
 
 .manuCloseButton:hover {
   background-color: darkgray;
+  cursor: pointer;
+  transition: ease-in-out;
 }
 
 .manu-show-modal {
@@ -470,6 +468,8 @@ input[type="checkbox"] {
 
 .colourCloseButton:hover {
   background-color: darkgray;
+  cursor: pointer;
+  transition: ease-in-out;
 }
 
 .colour-show-modal {
@@ -496,4 +496,22 @@ input[type="checkbox"] {
   display: flex;
   justify-content: center;
   width: 100px;
+}
+.showBtn{
+  /* float: right; */
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 3em;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
+  border: 0.1px;
+}
+.showBtn:hover{
+  background-color: darkgray;
+  cursor: pointer;
+  transition: ease-in-out;
 }
