@@ -301,15 +301,23 @@ function countFeatures(feature: string): number {
 
 
 function domColorCheckboxes() {
+    let colourContent = $("colourContent")
+
+    let mainDiv = document.createElement("div")
+    colourContent.appendChild(mainDiv)
     for (let i = 0; i < colours.length; i++) {
         let matching = countColors(colours[i]);
-        let colourDiv = $("whichColor");
+
+        let colourDiv = document.createElement("div")
         let colorInput = document.createElement("input");
+        colourContent.appendChild(colourDiv)
+        mainDiv.appendChild(colourDiv)
         colorInput.type = "checkbox";
         colorInput.name = colours[i];
+        mainDiv.id = "colourDiv"
         colorInput.value = colours[i];
         colorInput.classList.add("colorCheckbox");
-        colorInput.id = "whichColor";
+        colorInput.id = "colorInput";
         colorInput.addEventListener("click", (e) =>
             filterByColour(colours[i], (<any>e.target!).checked)
         );

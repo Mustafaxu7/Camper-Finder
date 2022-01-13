@@ -96,10 +96,15 @@ let modal = document.querySelector(".modal");
 
 // CONTINUE HERE 
 
+let colourButton = $("colourTrigger")
+colourButton.addEventListener("click", () => $("colourDiv").remove())
+colourButton.addEventListener("click", domColorCheckboxes)
 for (let i = 0; i < filters.length; i++) {
-    let filterButton = document.createElement("button")
-    filterButton.innerHTML = filters[i]
-    filterButton.addEventListener("click", () => filterBy(filters[i]))
+    // let filterButton = document.createElement("button")
+
+    // filterButton.innerHTML = filters[i]
+    // filterButton.addEventListener("click", () => filterBy(filters[i]))
+
     // $("filters").appendChild(filterButton)
 }
 

@@ -12,7 +12,6 @@
 </head>
 
 <body>
-    <button id="showBtn">show</button>
     <h1 id="name">OnlyVans</h1>
 
 
@@ -22,6 +21,7 @@
         <div class="modal">
             <div class="modal-content">
                 <span class="close-button">&times;</span>
+                <button id="showBtn" class="showBtn">show</button>
                 <h1 class="title">Features</h1>
                 <div id="features" class="features">
                     <!-- <h3 id="title">Features</h3> -->
@@ -33,6 +33,7 @@
         <div class="manuModal">
             <div class="manuContent">
                 <span class="manuCloseButton">&times;</span>
+                <button id="showBtn" class="showBtn">show</button>
                 <h1 class="title">Manufacturer</h1>
                 <div id="manufacturer">
                     <input type="checkbox" id="volkswagen" name="volkswagen" value=""><label
@@ -52,11 +53,13 @@
         <!-- Colour menu -->
         <button class="colourTrigger" id="colourTrigger">Colour</button>
         <div class="colourModal">
-            <div class="colourContent">
+            <div class="colourContent" id="colourContent">
                 <span class="colourCloseButton">&times;</span>
+                <button id="showBtn" class="showBtn">show</button>
                 <h1 class="title">Colour</h1>
+
                 <div class="colour" id="whichColor">
-                
+
                 </div>
             </div>
         </div><span class="separator">|</span>
@@ -66,6 +69,7 @@
         <div class="price-modal">
             <div class="price-content">
                 <span class="price-close-button">&times;</span>
+                <button id="showBtn" class="showBtn">show</button>
                 <h1 class="title">Price</h1>
                 <div id="price">
                     <input type="range" id="what-Price" name="price" min="0" max="1000" values="0"> <label
@@ -80,6 +84,7 @@
         <div class="modal2">
             <div class="content2">
                 <span class="close-btn">&times;</span>
+                <button id="showBtn" class="showBtn">show</button>
                 <!-- <h1 id="location">Location</h1> -->
                 <div class="ukmapContainer" id="ukMapContainer">
                     <img src="ukMap.jpg" alt="Map of the UK" class="mapUK" id="ukMap">
