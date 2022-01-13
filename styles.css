@@ -6,7 +6,6 @@
 
 h1 {
   font-size: 1.5rem;
-  /* text-align: center; */
   font-family: "Montserrat", sans-serif;
 }
 
@@ -27,12 +26,12 @@ body {
   /* justify-content: center; */
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: left center right;
-  position: relative;
+
   justify-items: center;
   justify-content: center;
   margin-left: 50px;
   margin-right: 50px;
-  /* border-top: 0.1px solid gray; */
+
 }
 
 .colorSquare {

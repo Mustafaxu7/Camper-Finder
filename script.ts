@@ -121,8 +121,8 @@ function showModal(section: string) {
 let closeButton = document.querySelector(".close-button");
 
 // trigger!.addEventListener("click", toggleModal);
-closeButton!.addEventListener("click", toggleModal);
-window.addEventListener("click", windowOnClick);
+// closeButton!.addEventListener("click", toggleModal);
+// window.addEventListener("click", windowOnClick);
 
 // Location
 let modal2 = document.querySelector(".modal2");

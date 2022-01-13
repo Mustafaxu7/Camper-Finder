@@ -167,15 +167,7 @@ function renderVans(results: Van[]) {
     }
 }
 // ALL ABOUT INCREASING USER EXPERIENCE (USER INTERFACE)
-//   Modal
-function toggleModal() {
-    modal!.classList.toggle("show-modal");
-}
-function windowOnClick(event: any) {
-    if (event.target === modal) {
-        toggleModal();
-    }
-}
+
 
 function openModal() {
     modal2!.classList.toggle("modal-appear")
@@ -213,11 +205,20 @@ function windowOnClickColour(event: any) {
     }
 }
 
+// function toggleFeatureModal() {
+//     featureModal!.classList.toggle("feature-show-modal")
+// }
+// function windowOnClickFeature(event: any) {
+//     if (event.target === featureModal) {
+//         toggleColourModal();
+//     }
+// }
 // ALL ABOUT CREATING THE ELEMENTS FOR FILTERING AND THE FILTERING SYSTEM
 
 let filteredVans: Van[] = []
 let selectedFeatures: any = []
 let selectedColors: string[] = []
+
 function filterByColour(colour: string, include: boolean) {
     if (include) {
         selectedColors.push(colour)
@@ -225,11 +226,8 @@ function filterByColour(colour: string, include: boolean) {
         let index = selectedColors.indexOf(colour)
         selectedColors.splice(index, 1)
     }
-    filteredVans = vans.filter((v) =>
-        selectedColors.includes(v.colour)
-    );
+    filteredVans = vans.filter((v) => selectedColors.includes(v.colour))
 }
-
 
 
 function filterByFeature(features: string, include: boolean) {
@@ -257,8 +255,6 @@ function containsAllLetters(a: string, b: string[]): boolean {
     }
 
     return false
-
-
 }
 
 
@@ -289,15 +285,7 @@ function countFeatures(feature: string): number {
     }
     return count;
 }
-// function countManufacturers(make: string): number {
-//     let count = 0;
-//     for (let i = 0; i < vans.length; i++) {
-//       if (vans[i].make.includes(make)) {
-//         count++;
-//       }
-//     }
-//     return count;
-// }
+
 
 
 function domColorCheckboxes() {
@@ -310,9 +298,7 @@ function domColorCheckboxes() {
         colorInput.value = colours[i];
         colorInput.classList.add("colorCheckbox");
         colorInput.id = "whichColor";
-        colorInput.addEventListener("click", (e) =>
-            filterByColour(colours[i], (<any>e.target!).checked)
-        );
+        colorInput.addEventListener("click", (e) => filterByColour(colours[i], (<any>e.target!).checked));
         let label = document.createElement("label");
         // label.htmlFor = colours[i] + " " + matching;
 
