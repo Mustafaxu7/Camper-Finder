@@ -13,6 +13,7 @@ body {
   font-family: "Nunito Sans", sans-serif;
   font-size: 13px;
   /* display: flex; */
+  -webkit-tap-highlight-color: transparent;
 }
 
 .holder {
@@ -24,28 +25,21 @@ body {
 
 
 .card {
-  background-color: rgb(200, 200, 255, 0.6);
-  margin: 30px;
-  padding: 5px;
   width: 250px;
-  height: 250px;
+  margin: 10px;
+  padding: 5px;
   border-radius: 3px;
   border: 1px solid white;
+  z-index: -1;
+  text-align: center;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgb(200, 200, 255, 0.6);
 }
-body {
-    -webkit-tap-highlight-color: transparent;
-}
-.card{
-    width:200px;
-    min-height:100px;
-    background-color: rgb(200,200,255,0.6);
-    margin:10px;
-    padding:5px;
-    border-radius:3px;
-    border:1px solid white;
-    box-shadow:10px 10px 10px rgba(0,0,0,.2);
-}
+
+/* .card-features{
+  display: flex;
+  flex-direction: row;
+} */
 .colorSquare{
     width:30px;
     height:30px;
@@ -95,18 +89,7 @@ body {
 
 
 
-.card {
-  background-color: rgb(200, 200, 255, 0.6);
-  margin: 30px;
-  padding: 5px;
-  width: 250px;
-  height: 250px;
-  border-radius: 3px;
-  border: 1px solid white;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-  z-index: -1;
-  text-align: center;
-}
+
 
 .colorSquare {
   width: 30px;
@@ -207,4 +190,7 @@ input[type="checkbox"] {
   display: inline-block;
   width: 20px;
   padding-left: 10px;
+}
+#van-name{
+  text-transform: capitalize;
 }

@@ -72,10 +72,17 @@ function generateRandomVans(make: any, numVans: number) {
         let makeAndModel = pickName.split(".")[0]
         let make = makeAndModel.split("_")[0]
         let model = makeAndModel.split("_")[1]
-        vans.push(new Van(make, model, pickName, Math.round(Math.random() * 1000), colours[Math.floor(Math.random() * colours.length)], Math.floor(Math.random() * 10000), { x: 10, y: 20 }, features[Math.random() * features.length]))
+        let keys = Object.keys(features)
+        let f = ''
+        for (let j=0; j<3; j++){
+            f+= keys[Math.floor(Math.random() * keys.length)] + ','
+        }
+         
+        vans.push(new Van(make, model, pickName, Math.round(Math.random() * 10000), colours[Math.floor(Math.random() * colours.length)], Math.floor(Math.random() * 10000), { x: 10, y: 20 }, f ))
     }
     return vans  //send back the 'complete' list of Vans
 }
+
 function renderVans(results: Van[]) {
 
     holder.innerHTML = ''
@@ -86,6 +93,7 @@ function renderVans(results: Van[]) {
         holder.appendChild(card)
 
         let heading = document.createElement("h1")
+        heading.id = 'van-name'
         heading.innerHTML = results[i].make + " " + results[i].model
         card.appendChild(heading)
 
@@ -101,6 +109,18 @@ function renderVans(results: Van[]) {
         let mileage = document.createElement("p")
         mileage.innerHTML = results[i].mileage + " miles"
         card.appendChild(mileage)
+
+        let featuresDiv = document.createElement('div')
+        featuresDiv.classList.add('card-features')
+        card.appendChild(featuresDiv)
+        let featureKeys = results[i].features.split(',')
+        for (let i=0; i<featureKeys.length -1; i++){
+            let feature = document.createElement('p')
+            feature.innerHTML=  features[featureKeys[i]]
+            featuresDiv.appendChild(feature)
+
+        }
+        
 
         let color = document.createElement("div")
         color.classList.add("colorSquare")
@@ -121,10 +141,10 @@ function windowOnClick(event: any) {
 
 // ALL ABOUT CREATING THE ELEMENTS FOR FILTERING AND THE FILTERING SYSTEM
 
-let filteredVans:any= []
-let selectedProperties:any = []
+let filteredVans: Van[]= []
+let selectedProperties: any = []
   
-function filterByColour(colour:string,  include: boolean) {
+function filterByColour(colour:string, include: boolean) {
     if(include){
         selectedProperties.push(colour)
     }else{
@@ -132,33 +152,50 @@ function filterByColour(colour:string,  include: boolean) {
        selectedProperties.splice(index, 1)
     }
      
-    vans = vans.filter((v) => selectedProperties.includes(v.colour) )
+    filteredVans = vans.filter((v) => selectedProperties.includes(v.colour) )
+
     renderVans(vans)
     
 }
 
+let selectedFeatures: any = []
 function filterByFeature(features:string, include:boolean) {
     if(include){
-        selectedProperties.push(features)
+        selectedFeatures.push(features)
     }
     else{
-        let index = selectedProperties.indexOf(features)
-        selectedProperties.splice(index, 1)
+        let index = selectedFeatures.indexOf(features)
+        selectedFeatures.splice(index, 1)
     }
+    
+        for (let i=0; i<vans.length; i++){
+            for (let k=0; k<features.length; i++){
+               features[vans[i].features[k]]
+            }
+            
 
-    filteredVans = filteredVans.filter((v: { features: any }) => selectedProperties.includes(v.features) )
-    // renderVans(filteredVans)
+
+
+    vans = vans.filter((v) => selectedFeatures.includes( ))
+    
+    
+    
 }
 
 function filterByPrice() {
     $('priceText').innerText =((<HTMLInputElement>$('what-Price')).value)  
-    selectedProperties.push(parseInt((<HTMLInputElement>$('what-Price')).value ))
+    vans = vans.filter((v) => v.price <= parseInt((<HTMLInputElement>$('what-Price')).value ))
     
-    // vans = vans.filter((v) => v.price <= parseInt((<HTMLInputElement>$('what-Price')).value ))
+    renderVans(vans)
     
 }
 
+$('showBtn').addEventListener('click', () => renderFilteredVans())
 
+function renderFilteredVans (){
+    
+    renderVans(filteredVans)
+}
 
 
 
@@ -181,22 +218,28 @@ function domColorCheckboxes() {
         colourDiv.appendChild(div)
     }
 }
-function domfeatureCheckboxes() {
-    for (let i = 0; i < features.length; i++) {
+function domFeatureCheckboxes() {
+    // for (let i = 0; i < features.length; i++) 
+    
+    for (let k in features){
+        
         let featureDiv = $("features");
         let featureInput = document.createElement('input');
         featureInput.type = "checkbox"
-        featureInput.name = features[i]
-        featureInput.value = features[i]
+        featureInput.name = <any>features[k]
+        featureInput.value = features[k]
         featureInput.classList.add('featuresCheckbox')
         featureInput.id = 'whichFeature'
-        featureInput.addEventListener("click", (e) => filterByFeature(features[i], (<any>e.target!).checked))
+        featureInput.addEventListener("click", (e) => filterByFeature(features[k], (<any>e.target!).checked))
         let div = document.createElement("div")
         let label = document.createElement('label');
-        label.htmlFor = features[i];
-        label.appendChild(document.createTextNode(features[i]));
+        label.htmlFor = features[k];
+        label.appendChild(document.createTextNode(features[k]));
         div.appendChild(featureInput)
         div.appendChild(label)
         featureDiv.appendChild(div)
     }
 }
+
+
+// localStorage.clear()

@@ -28,18 +28,19 @@ class Circle {
 }
 
 class Van {
+    Object: any;
     constructor(public make: string, public model: string, public picture: string, public price: number, public colour: string, public mileage: number, public location: object, public features: string) {
     }
 }
-// class Feature {
-//     constructor(public feature: string, )
-// }
+
+
+
+
 
 // GETTING ALL THE ID'S OF ELEMENTS 
-
 let ukMapContainer = $("ukMapContainer")
 let ukMap = $("ukMap")
-let whichColour = $("whichColor") //grabs the dropdown box
+
 let holder: HTMLElement = $("holder")!
 $('what-Price').addEventListener('change', filterByPrice)
 
@@ -55,10 +56,29 @@ let clickedMousePosition2 = new Vector(0, 0)
 let clickCount = 0
 let id = 0
 
+let features:Record<string,string> =  {
+    A:"Fixed Roof",
+    B:'Pop-Up Roof',
+    C:'Fridge',
+    D:"Propane Gas" ,
+    E:"Cooktop",
+    F:"Electric Cooktop",
+    G:"Grill",
+    H:"Kitchen",
+    I:"AC",
+    J:"Bed",
+    K:"Toilet",
+    L:"Power System",
+    M:"USB Charging",
+    N:'Folding-Table',
+    O:'Manual',
+    P:'Automatic',
+    Q:"Travel Seats"
+}
 // ARRAYS CREATED BY SPLITTING STRINGS
 
 let colours = "Red,Orange,Yellow,Green,Blue,Violet,Black,White,Gray".split(",")
-let features = "Fixed Roof,Pop-Up Roof,Fridge,Propane Gas Cooktop,Electric Cooktop,Grill,Propane Gas Powered Water Heater,Kitchen,AC,Bed,Portable Toilet,Internal Power System,USB Charging Points,Folding Dining Table,Manual,Automatic,Travel Seats".split(",")
+// let features = "Fixed Roof,Pop-Up Roof,Fridge,Propane Gas Cooktop,Electric Cooktop,Grill,Propane Gas Powered Water Heater,Kitchen,AC,Bed,Portable Toilet,Internal Power System,USB Charging Points,Folding Dining Table,Manual,Automatic,Travel Seats".split(",")
 makes.Volkswagen = "Caddy, California, Classic, Kombi, Trendline".split(",")
 makes.Ford = "Transit, Tourneo, Errier, Panama, Kombi".split(",")
 makes.Vauxhall = "Bedford, Midi, Movano, Turbo, Vivaro".split(",")
@@ -76,11 +96,10 @@ if (vans == null) {
 renderVans(vans)
 
 domColorCheckboxes()
-domfeatureCheckboxes()
+domFeatureCheckboxes()
 
 
-// whichColor.addEventListener("change", filterByColour)
-// $("whichColor").addEventListener("click", () => filterByColour($("whichColor".value, false))
+
 
 let modal = document.querySelector(".modal");
 let trigger = document.querySelector(".trigger");
@@ -102,3 +121,5 @@ for (let i = 0; i < circles.length; i++) {
     let x = Math.sqrt((Math.random() * squaredRadius) + normalRadius) * Math.cos(Math.random() * 360)
 
 }
+
+
