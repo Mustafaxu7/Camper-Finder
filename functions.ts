@@ -168,15 +168,15 @@ function renderVans(results: Van[]) {
 }
 // ALL ABOUT INCREASING USER EXPERIENCE (USER INTERFACE)
 
-
-function openModal() {
-    modal2!.classList.toggle("modal-appear")
+function toggleFeatureModal() {
+    featureModal!.classList.toggle("show-modal")
 }
-function windowInClick(event: any) {
-    if (event.target === modal2) {
-        openModal();
+function windowOnClickFeature(event: any) {
+    if (event.target === featureModal) {
+        toggleFeatureModal();
     }
 }
+
 
 function toggleManuModal() {
     manuModal!.classList.toggle("manu-show-modal");
@@ -204,15 +204,16 @@ function windowOnClickColour(event: any) {
         toggleColourModal();
     }
 }
+function openModal() {
+    modal2!.classList.toggle("modal-appear")
+}
+function windowInClick(event: any) {
+    if (event.target === modal2) {
+        openModal();
+    }
+}
 
-// function toggleFeatureModal() {
-//     featureModal!.classList.toggle("feature-show-modal")
-// }
-// function windowOnClickFeature(event: any) {
-//     if (event.target === featureModal) {
-//         toggleColourModal();
-//     }
-// }
+
 // ALL ABOUT CREATING THE ELEMENTS FOR FILTERING AND THE FILTERING SYSTEM
 
 let filteredVans: Van[] = []
@@ -289,19 +290,26 @@ function countFeatures(feature: string): number {
 
 
 function domColorCheckboxes() {
+    let colourContent = $("colourContent")
+
+    let mainDiv = document.createElement("div")
+    colourContent.appendChild(mainDiv)
     for (let i = 0; i < colours.length; i++) {
         let matching = countColors(colours[i]);
-        let colourDiv = $("whichColor");
+
+        let colourDiv = document.createElement("div")
         let colorInput = document.createElement("input");
+        colourContent.appendChild(colourDiv)
+        mainDiv.appendChild(colourDiv)
         colorInput.type = "checkbox";
         colorInput.name = colours[i];
+        mainDiv.id = "colourDiv"
         colorInput.value = colours[i];
         colorInput.classList.add("colorCheckbox");
         colorInput.id = "whichColor";
         colorInput.addEventListener("click", (e) => filterByColour(colours[i], (<any>e.target!).checked));
         let label = document.createElement("label");
-        // label.htmlFor = colours[i] + " " + matching;
-
+        
         label.appendChild(document.createTextNode(colours[i] + " " + matching));
         let div = document.createElement("div");
         div.appendChild(colorInput);
