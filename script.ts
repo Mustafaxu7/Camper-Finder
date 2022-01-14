@@ -90,9 +90,7 @@ domFeatureCheckboxes()
 
 let filters = "price,location,colors,manufacturer,features".split(",")
 
-// Features
-let modal = document.querySelector(".modal");
-// let trigger = document.querySelector(".trigger");
+
 
 // CONTINUE HERE 
 
