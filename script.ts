@@ -193,7 +193,15 @@ function displayAmountCircles(clickedPosition: Vector, movedPosition: Vector) {
 
 
 // displayAmountCircles()
+function createDots {
 
+    for (let i = 0; i < vans.length; i++) {
+        dots.push(new Circle(1, vans[i].location.x, vans[i].location.x, 1))
+        dots[i].addCircle()
+        console.log(vans[i].location)
+    }
+}
+createDots()
 
 
 for (let i = 0; i < circles.length; i++) {

@@ -268,7 +268,10 @@ function filterByPrice() {
 
     vans = filteredVans
 }
-
+// I WAS TESTING TO SEE IF THE CODE RUNS
+// SHOWBTN RETURNS NULL
+let btn = document.getElementById("showBtn")
+$('showBtn').addEventListener("click", () => console.log("x"))
 $('showBtn').addEventListener('click', () => { vans = filteredVans; renderVans(vans) })
 
 function countColors(color: string): number {
