@@ -9,6 +9,10 @@
     <script src="functions.js" defer></script>
     <script src="script.js" defer></script>
     <link rel='stylesheet' href='styles.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Kanit&family=Libre+Franklin:wght@300&family=Quicksand&family=Raleway&family=Source+Code+Pro&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -20,9 +24,9 @@
         <!-- Features Menu -->
         <button id="trigger" class="trigger">Features</button>
         <div class="modal">
-            <div class="modal-content">
+            <div class="modal-content" id="modal-content">
                 <span class="close-button">&times;</span>
-                <button id="showBtn" class="showBtn">show</button>
+                <button id="showBtn" class="showBtn">Apply</button>
                 <h1 class="title">Features</h1>
                 <div id="features" class="features">
                     <!-- <h3 id="title">Features</h3> -->
@@ -34,7 +38,7 @@
         <div class="manuModal">
             <div class="manuContent">
                 <span class="manuCloseButton">&times;</span>
-                <button id="showBtn" class="showBtn">show</button>
+                <button id="showBtn" class="showBtn">Apply</button>
                 <h1 class="title">Manufacturer</h1>
                 <div id="manufacturer">
                     <input type="checkbox" id="volkswagen" name="volkswagen" value=""><label
@@ -56,7 +60,7 @@
         <div class="colourModal">
             <div class="colourContent" id="colourContent">
                 <span class="colourCloseButton">&times;</span>
-                <button id="showBtn" class="showBtn">show</button>
+                <button id="showBtn" class="showBtn">Apply</button>
                 <h1 class="title">Colour</h1>
 
                 <div class="colour" id="whichColor">
@@ -70,7 +74,7 @@
         <div class="price-modal">
             <div class="price-content">
                 <span class="price-close-button">&times;</span>
-                <button id="showBtn" class="showBtn">show</button>
+                <button id="showBtn" class="showBtn">Apply</button>
                 <h1 class="title">Price</h1>
                 <div id="price">
                     <input type="range" id="what-Price" name="price" min="0" max="1000" values="0"> <label
@@ -86,7 +90,6 @@
         <div class="modal2">
             <div class="content2">
                 <span class="close-btn">&times;</span>
-                <button id="showBtn" class="showBtn">show</button>
                 <!-- <h1 id="location">Location</h1> -->
                 <div class="ukmapContainer" id="ukMapContainer" style="width: 550px; height: 650px;">
                     <img src="ukMap.jpg" alt="Map of the UK" class="mapUK" id="ukMap">

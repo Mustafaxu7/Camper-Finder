@@ -99,6 +99,7 @@ function createPositions() {
         }
     }
 }
+
 createPositions()
 function generateRandomVans(make: any, numVans: number) {
     let vanTypes: string[] = "fiat_ducato.png,fiat_randger.png,fiat_swift.png,fiat_talento.png,fiat_trigano.png,ford_kombi.png,ford_panama.png,ford_terrier.jpg,ford_tourneo.jpg,ford_transit.jpg,nissan_elgrand.png,nissan_elgrande.jpg,nissan_env200.png,nissan_nv200.png,nissan_primastar.jpg,vauxhall_bedford.jpg,vauxhall_midi.jpg,vauxhall_movano.jpeg,vauxhall_turbo.jpg,vauxhall_vivaro.png,vw_caddy.jpg,vw_california.png,vw_classic.jpg,vw_kombi.jpg,vw_trendline.jpg".split(",")
@@ -119,6 +120,7 @@ function generateRandomVans(make: any, numVans: number) {
     }
     return vans  //send back the 'complete' list of Vans
 }
+
 
 function renderVans(results: Van[]) {
 
@@ -155,7 +157,7 @@ function renderVans(results: Van[]) {
         for (let i = 0; i < featureKeys.length - 1; i++) {
 
             let feature = document.createElement('p')
-            feature.innerHTML = features[featureKeys[i]]
+            // feature.innerHTML = features[featureKeys[i]]
             featuresDiv.appendChild(feature)
 
         }
@@ -242,7 +244,7 @@ function filterByFeature(features: string, include: boolean) {
         selectedFeatures.splice(index, 1)
     }
     filteredVans = vans.filter((v) => containsAllLetters(v.features, selectedFeatures))
-    $("numberOfVans").innerHTML = `${filteredVans.length}`
+    // $("numberOfVans").innerHTML = `${filteredVans.length}`
 
 }
 function containsAllLetters(a: string, b: string[]): boolean {
@@ -298,15 +300,6 @@ function countFeatures(feature: string): number {
     }
     return count;
 }
-// function countManufacturers(make: string): number {
-//     let count = 0;
-//     for (let i = 0; i < vans.length; i++) {
-//       if (vans[i].make.includes(make)) {
-//         count++;
-//       }
-//     }
-//     return count;
-// }
 
 
 function domColorCheckboxes() {
@@ -344,14 +337,14 @@ function domColorCheckboxes() {
 function domFeatureCheckboxes() {
     // for (let i = 0; i < features.length; i++) 
 
+    // MAKE SURE YOU REMOVE AND UPDATE 
     // CHECK IF THE IDS ARE CORRECT
-    // let featureContent = $("featureContent")
-
-    // let mainDiv = document.createElement("div")
-    // colourContent.appendChild(mainDiv)
+    let featureContent = $("modal-content")
+    let mainDiv = document.createElement("div")
+    featureContent.appendChild(mainDiv)
     for (let k in features) {
         let matching = countFeatures(k);
-        let featureDiv = $("features");
+        mainDiv.id = "featureDiv"
         let featureInput = document.createElement('input');
         featureInput.type = "checkbox"
         featureInput.name = <any>features[k]
@@ -361,10 +354,10 @@ function domFeatureCheckboxes() {
         featureInput.addEventListener("click", (e) => filterByFeature(k, (<any>e.target!).checked))
         let div = document.createElement("div")
         let label = document.createElement('label');
-        label.htmlFor = features[k];
-        label.appendChild(document.createTextNode(features[k] + " " + matching));
+        label.htmlFor = features[k].text;
+        label.appendChild(document.createTextNode(features[k].text + " " + matching));
         div.appendChild(featureInput)
         div.appendChild(label)
-        featureDiv.appendChild(div)
+        mainDiv.appendChild(div)
     }
 }

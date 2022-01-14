@@ -45,26 +45,24 @@ let clickedMousePosition2 = new Vector(0, 0)
 let clickCount = 0
 let id = 1
 
-let features: Record<string, string> = {
-    // 2nd paramater becomes object
-    // A: {text: "Fixed Roof", i: "<img src='https://img.icons8.com/material-sharp/50/000000/car-battery--v2.png'/>"},
-    A: "Fixed Roof",
-    B: 'Pop-Up Roof',
-    C: 'Fridge',
-    D: "Propane Gas",
-    E: "Cooktop",
-    F: "Electric Cooktop",
-    G: "Grill",
-    H: "Kitchen",
-    I: "AC",
-    J: "Bed",
-    K: "Toilet",
-    L: "Power System",
-    M: "USB Charging",
-    N: 'Folding-Table',
-    O: 'Manual',
-    P: 'Automatic',
-    Q: "Travel Seats"
+let features: Record<string, object> = {
+    A: { text: "Fixed Roof", i: "<img src='https://img.icons8.com/windows/50/000000/car-roof-box.png'/>" },
+    B: { text: 'Pop-Up Roof', i: "<img src='https://img.icons8.com/material-outlined/50/000000/convertible-roof-warning--v2.png'/>", },
+    C: { text: 'Fridge', i: "<img src='https://img.icons8.com/material-outlined/50/000000/fridge.png'/>" },
+    D: { text: "Propane Gas", i: "<img src='https://img.icons8.com/external-those-icons-lineal-those-icons/50/000000/external-stove-kitchen-those-icons-lineal-those-icons-1.png'/>" },
+    E: { text: "Cooktop", i: "<img src='https://img.icons8.com/ios/50/000000/electric-stovetop.png'/>" },
+    F: { text: "Electric Cooktop", i: "<img src='https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/50/000000/external-kitchen-kitchen-kiranshastry-lineal-kiranshastry.png'/>" },
+    G: { text: "Grill", i: "<img src='https://img.icons8.com/external-vitaliy-gorbachev-lineal-vitaly-gorbachev/50/000000/external-grill-event-vitaliy-gorbachev-lineal-vitaly-gorbachev.png'/>" },
+    H: { text: "Kitchen", i: "<img src='https://img.icons8.com/external-photo3ideastudio-solid-photo3ideastudio/64/000000/external-kitchen-hostel-photo3ideastudio-solid-photo3ideastudio.png'/>" },
+    I: { text: "AC", i: "<img src='https://img.icons8.com/external-gradak-royyan-wijaya/50/000000/external-ac-gradak-furniture-gradak-royyan-wijaya-4.png'/>" },
+    J: { text: "Bed", i: "<img src='https://img.icons8.com/material-outlined/50/000000/bed.png'/>" },
+    K: { text: "Toilet", i: "<img src='https://img.icons8.com/material-outlined/50/000000/toilet-bowl.png'/>" },
+    L: { text: "Power System", i: "<img src='https://img.icons8.com/external-dreamstale-lineal-dreamstale/50/000000/external-electricity-energy-dreamstale-lineal-dreamstale-3.png'/>" },
+    M: { text: "USB Charging", i: "<img src='https://img.icons8.com/external-those-icons-fill-those-icons/50/000000/external-usb-it-components-those-icons-fill-those-icons.png'/>" },
+    N: { text: 'Folding-Table', i: "<img src='https://img.icons8.com/ios-glyphs/50/000000/table.png'/>" },
+    O: { text: 'Manual', i: "<img src='https://img.icons8.com/ios-glyphs/50/000000/manual.png'/>" },
+    P: { text: 'Automatic', i: "<img src='https://img.icons8.com/ios-glyphs/50/000000/automatic.png'/>" },
+    Q: { text: "Travel Seats", i: "<img src='https://img.icons8.com/external-those-icons-lineal-those-icons/50/000000/external-safety-seat-cars-components-those-icons-lineal-those-icons-1.png'/>" }
 }
 // ARRAYS CREATED BY SPLITTING STRINGS
 
@@ -80,7 +78,7 @@ makes.Nissan = "NV200, ENV200, Primastar, Elgrand, Elgrande".split(",")
 
 vans = JSON.parse(localStorage.getItem("vans")!);
 if (vans == null) {
-    vans = generateRandomVans(makes, 50)
+    vans = generateRandomVans(makes, 20)
     saveVans()
 }
 renderVans(vans)
@@ -116,14 +114,15 @@ let colourButton = $("colourTrigger")
 colourButton.addEventListener("click", () => $("colourDiv").remove())
 colourButton.addEventListener("click", domColorCheckboxes)
 
-function showModal(section: string) {
-    // Show the modal dialog and reveal the appropriate section
-    // 
-}
+let featureButton = $("trigger")
+featureButton.addEventListener("click", () => $("featureDiv").remove())
+featureButton.addEventListener("click", domFeatureCheckboxes)
 
+//Features
+let trigger = document.querySelector(".trigger");
 let closeButton = document.querySelector(".close-button");
 
-// trigger!.addEventListener("click", toggleModal);
+trigger!.addEventListener("click", toggleModal);
 closeButton!.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
@@ -214,3 +213,12 @@ function createDots() {
 }
 $("activate").addEventListener("click", createDots)
 let dotElements = document.getElementsByClassName("savedCircles");
+for (let i = 0; i < circles.length; i++) {
+    let normalRadius = circles[i].radius
+    let squaredRadius = Math.pow(circles[i].radius, 2)
+    let x = Math.sqrt((Math.random() * squaredRadius) + normalRadius) * Math.cos(Math.random() * 360)
+}
+// for (let i = 0; i < vans.length; i++) {
+//     let keys = Object.keys(features)
+//     console.log(features.keys)
+// }
