@@ -313,8 +313,10 @@ function domColorCheckboxes() {
         mainDiv.id = "colourDiv"
         colorInput.value = colours[i];
         colorInput.classList.add("colorCheckbox");
-        colorInput.id = "whichColor";
-        colorInput.addEventListener("click", (e) => filterByColour(colours[i], (<any>e.target!).checked));
+        colorInput.id = "colorInput";
+        colorInput.addEventListener("click", (e) =>
+            filterByColour(colours[i], (<any>e.target!).checked)
+        );
         let label = document.createElement("label");
         
         label.appendChild(document.createTextNode(colours[i] + " " + matching));
