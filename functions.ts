@@ -98,6 +98,7 @@ function createPositions() {
         }
     }
 }
+
 createPositions()
 function generateRandomVans(make: any, numVans: number) {
     let vanTypes: string[] = "fiat_ducato.png,fiat_randger.png,fiat_swift.png,fiat_talento.png,fiat_trigano.png,ford_kombi.png,ford_panama.png,ford_terrier.jpg,ford_tourneo.jpg,ford_transit.jpg,nissan_elgrand.png,nissan_elgrande.jpg,nissan_env200.png,nissan_nv200.png,nissan_primastar.jpg,vauxhall_bedford.jpg,vauxhall_midi.jpg,vauxhall_movano.jpeg,vauxhall_turbo.jpg,vauxhall_vivaro.png,vw_caddy.png,vw_california.png,vw_classic.jpg,vw_kombi.png,vw_trendline.jpg".split(",")
@@ -118,6 +119,7 @@ function generateRandomVans(make: any, numVans: number) {
     }
     return vans  //send back the 'complete' list of Vans
 }
+
 
 function renderVans(results: Van[]) {
 
@@ -154,7 +156,7 @@ function renderVans(results: Van[]) {
         for (let i = 0; i < featureKeys.length - 1; i++) {
 
             let feature = document.createElement('p')
-            feature.innerHTML = features[featureKeys[i]]
+            // feature.innerHTML = features[featureKeys[i]]
             featuresDiv.appendChild(feature)
 
         }
@@ -337,7 +339,6 @@ function domFeatureCheckboxes() {
 
     for (let k in features) {
         let matching = countFeatures(k);
-        console.log(matching)
         let featureDiv = $("features");
         let featureInput = document.createElement('input');
         featureInput.type = "checkbox"
@@ -348,8 +349,8 @@ function domFeatureCheckboxes() {
         featureInput.addEventListener("click", (e) => filterByFeature(k, (<any>e.target!).checked))
         let div = document.createElement("div")
         let label = document.createElement('label');
-        label.htmlFor = features[k];
-        label.appendChild(document.createTextNode(features[k] + " " + matching));
+        label.htmlFor = features[k].text;
+        label.appendChild(document.createTextNode(features[k].text + " " + matching));
         div.appendChild(featureInput)
         div.appendChild(label)
         featureDiv.appendChild(div)

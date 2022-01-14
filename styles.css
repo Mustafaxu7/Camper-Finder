@@ -207,19 +207,15 @@ img {
 }
 
 .close-btn {
-  line-height: 10px;
-  /* border-radius: 1px; */
-  background-color: lightgrey;
-  border: 1px solid #ffffff;
-  position: absolute;
-  bottom: 0;
-  margin-left: 650px;
-  margin-bottom: 50px;
-  font-size: 30px;
-  z-index: 1;
-  height: 20px;
-  cursor: pointer;
   float: right;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
+  margin-right:54%;
+  margin-top: 5%;
 }
 
 .close-btn:hover {
@@ -335,9 +331,8 @@ input[type="checkbox"] {
 #name {
   margin-top: 10px;
   background-color: rgb(206, 206, 206);
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-family: Helvetica, sans-serif;
+  padding: 20px;
+  font-family: 'Comfortaa', cursive;
 }
 
 /* Manufacturer Modal */
@@ -500,8 +495,8 @@ input[type="checkbox"] {
 .showBtn{
   /* float: right; */
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 24px;
+  bottom: 13px;
   width: 3em;
   line-height: 1.5rem;
   text-align: center;
