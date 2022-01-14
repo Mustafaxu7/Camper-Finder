@@ -116,7 +116,7 @@ function generateRandomVans(make: any, numVans: number) {
         for (let j = 0; j < 3; j++) {
             f += keys[Math.floor(Math.random() * keys.length)] + ','
         }
-        vans.push(new Van(make, model, pickName, Math.round(Math.random() * 10000), colours[Math.floor(Math.random() * colours.length)], Math.floor(Math.random() * 10000), location, f))
+        vans.push(new Van(make, model, pickName, Math.round(Math.random() * 30000) + 2000, colours[Math.floor(Math.random() * colours.length)], Math.floor(Math.random() * 10000), location, f))
     }
     return vans  //send back the 'complete' list of Vans
 }
