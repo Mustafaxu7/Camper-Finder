@@ -17,7 +17,7 @@
 
     <div class="pop-upBoxes">
         
-        <button id="trigger" class="trigger">changing Features</button>
+        <button id="trigger" class="trigger">Features</button>
         <div class="modal">
             <div class="modal-content">
                 <span class="close-button">&times;</span>
@@ -29,18 +29,6 @@
             </div>
         </div><span class="separator">|</span>
        
-
-       
-        <!-- <button class="featureTrigger" id="featureTrigger">feature</button>
-        <div class="featureModal">
-            <div class="featureContent">
-                <span class="featureCloseButton">&times;</span>
-                <h1 class="title">new feature</h1>
-                <div class="feature" id="whichColor">
-                </div>
-            </div>
-        </div><span class="separator">|</span> -->
-        
         <!-- manufacturer -->
         <button class="manuTrigger" id="manuTrigger">Manufacturer</button>
         <div class="manuModal">
@@ -81,12 +69,19 @@
         <div class="price-modal">
             <div class="price-content">
                 <span class="price-close-button">&times;</span>
-                <button id="showBtn" class="showBtn">show</button>
+                <button id="showPriceBtn" class="showBtn">show</button>
                 <h1 class="title">Price</h1>
                 <div id="price">
-                    <input type="range" id="what-Price" name="price" min="0" max="1000" values="0"> <label
-                        for="price"></label>
-                    <p>Value: <span id="priceText"> </span> </p>
+                    <div> 
+                        <label for="min">Minimum price</label>
+                        <input id="min" class="min" name="min" type="number" step="1" min="0" placeholder="400" />
+                    </div>
+                    
+                    <div>
+                        <label for="max">Maximum price</label>
+                        <input id="max" class="max" name="max" type="number" step="1" min="0" placeholder="10000" />
+                    </div>
+
                 </div>
             </div>
         </div><span class="separator">|</span>

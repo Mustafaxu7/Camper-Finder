@@ -32,8 +32,8 @@ let ukMapContainer = $("ukMapContainer")
 let ukMap = $("ukMap")
 
 let holder: HTMLElement = $("holder")!
-$('what-Price').addEventListener('change', filterByPrice)
-
+$('min').addEventListener('change', filterByPrice)
+$('max').addEventListener('change', filterByPrice)
 // EMPTY ARRAYS, OBJECTS, BOOLEANS AND VARIABLES
 let makes: any = {}
 let vans: Van[] = []
@@ -67,7 +67,6 @@ let features: Record<string, string> = {
 // ARRAYS CREATED BY SPLITTING STRINGS
 
 let colours = "Red,Orange,Yellow,Green,Blue,Violet,Black,White,Gray".split(",")
-// let features = "Fixed Roof,Pop-Up Roof,Fridge,Propane Gas Cooktop,Electric Cooktop,Grill,Propane Gas Powered Water Heater,Kitchen,AC,Bed,Portable Toilet,Internal Power System,USB Charging Points,Folding Dining Table,Manual,Automatic,Travel Seats".split(",")
 makes.Volkswagen = "Caddy, California, Classic, Kombi, Trendline".split(",")
 makes.Ford = "Transit, Tourneo, Errier, Panama, Kombi".split(",")
 makes.Vauxhall = "Bedford, Midi, Movano, Turbo, Vivaro".split(",")
@@ -92,8 +91,6 @@ let filters = "price,location,colors,manufacturer,features".split(",")
 
 
 
-// CONTINUE HERE 
-
 let colourButton = $("colourTrigger")
 colourButton.addEventListener("click", () => $("colourDiv").remove())
 colourButton.addEventListener("click", domColorCheckboxes)
@@ -113,6 +110,9 @@ function filterBy(type: string) {
     if (type == "colors") {
         domColorCheckboxes();
     }
+    // if(type == 'price'){
+    //     domPriceSlider()
+    // }
 
 }
 
@@ -121,9 +121,6 @@ let featureModal = document.querySelector('.modal')
 let featureTrigger = document.querySelector('trigger')
 let closeButton = document.querySelector(".close-button");
 
-featureTrigger!.addEventListener("click", toggleFeatureModal);
-closeButton!.addEventListener("click", toggleFeatureModal);
-window.addEventListener("click", windowOnClickFeature);
 
 // Manufacturer
 let manuModal = document.querySelector(".manuModal");

@@ -260,11 +260,24 @@ function containsAllLetters(a: string, b: string[]): boolean {
 
 
 function filterByPrice() {
-    $('priceText').innerText = ((<HTMLInputElement>$('what-Price')).value)
-    filteredVans = vans.filter((v) => v.price <= parseInt((<HTMLInputElement>$('what-Price')).value))
+    
+    filteredVans = vans.filter((v) => v.price <= parseInt((<HTMLInputElement>$('max')).value))
+    filteredVans = filteredVans.filter((v) => v.price >= parseInt((<HTMLInputElement>$('min')).value))
+    
+   
 
-    vans = filteredVans
+    // let minPrice = parseInt((<HTMLInputElement>$('min')).value)
+    // let maxPrice = parseInt((<HTMLInputElement>$('max')).value)
+    
+    
+    // for (let i=0; i<vans.length; i++) {
+    //     if( vans[i].price >= minPrice ) {
+
+    //     }
+    //   }
 }
+
+$('showPriceBtn').addEventListener('click', () => { vans = filteredVans; renderVans(vans) })
 
 $('showBtn').addEventListener('click', () => { vans = filteredVans; renderVans(vans) })
 
@@ -296,7 +309,6 @@ function domColorCheckboxes() {
     colourContent.appendChild(mainDiv)
     for (let i = 0; i < colours.length; i++) {
         let matching = countColors(colours[i]);
-
         let colourDiv = document.createElement("div")
         let colorInput = document.createElement("input");
         colourContent.appendChild(colourDiv)
@@ -316,14 +328,13 @@ function domColorCheckboxes() {
         div.appendChild(label);
         colourDiv.appendChild(div);
     }
-}
+} 
 
 function domFeatureCheckboxes() {
     // for (let i = 0; i < features.length; i++) 
 
     for (let k in features) {
         let matching = countFeatures(k);
-        console.log(matching)
         let featureDiv = $("features");
         let featureInput = document.createElement('input');
         featureInput.type = "checkbox"
