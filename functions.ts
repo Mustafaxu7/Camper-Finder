@@ -270,11 +270,6 @@ function filterByPrice() {
     // let maxPrice = parseInt((<HTMLInputElement>$('max')).value)
     
     
-    // for (let i=0; i<vans.length; i++) {
-    //     if( vans[i].price >= minPrice ) {
-
-    //     }
-    //   }
 }
 
 $('showPriceBtn').addEventListener('click', () => { vans = filteredVans; renderVans(vans) })
