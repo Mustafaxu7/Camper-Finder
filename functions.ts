@@ -10,6 +10,7 @@ class Vector {
     }
 }
 
+
 // ALL ABOUT SAVING IN LOCALSTORAGE
 
 function saveCircles() {
@@ -100,7 +101,7 @@ function createPositions() {
 }
 createPositions()
 function generateRandomVans(make: any, numVans: number) {
-    let vanTypes: string[] = "fiat_ducato.png,fiat_randger.png,fiat_swift.png,fiat_talento.png,fiat_trigano.png,ford_kombi.png,ford_panama.png,ford_terrier.jpg,ford_tourneo.jpg,ford_transit.jpg,nissan_elgrand.png,nissan_elgrande.jpg,nissan_env200.png,nissan_nv200.png,nissan_primastar.jpg,vauxhall_bedford.jpg,vauxhall_midi.jpg,vauxhall_movano.jpeg,vauxhall_turbo.jpg,vauxhall_vivaro.png,vw_caddy.png,vw_california.png,vw_classic.jpg,vw_kombi.png,vw_trendline.jpg".split(",")
+    let vanTypes: string[] = "fiat_ducato.png,fiat_randger.png,fiat_swift.png,fiat_talento.png,fiat_trigano.png,ford_kombi.png,ford_panama.png,ford_terrier.jpg,ford_tourneo.jpg,ford_transit.jpg,nissan_elgrand.png,nissan_elgrande.jpg,nissan_env200.png,nissan_nv200.png,nissan_primastar.jpg,vauxhall_bedford.jpg,vauxhall_midi.jpg,vauxhall_movano.jpeg,vauxhall_turbo.jpg,vauxhall_vivaro.png,vw_caddy.jpg,vw_california.png,vw_classic.jpg,vw_kombi.jpg,vw_trendline.jpg".split(",")
     let vans = []
     for (let i = 0; i < numVans; i++) {
         let pickName = pickFrom(vanTypes)
@@ -268,11 +269,16 @@ function filterByPrice() {
 
     vans = filteredVans
 }
-// I WAS TESTING TO SEE IF THE CODE RUNS
-// SHOWBTN RETURNS NULL
-let btn = document.getElementById("showBtn")
-$('showBtn').addEventListener("click", () => console.log("x"))
-$('showBtn').addEventListener('click', () => { vans = filteredVans; renderVans(vans) })
+
+
+
+let showBtns = document.getElementsByClassName("showBtn");
+
+
+for (let i = 0; i < showBtns.length; i++) {
+    showBtns[i].addEventListener('click', () => { vans = filteredVans; renderVans(vans) })
+}
+
 
 function countColors(color: string): number {
     let count = 0
@@ -338,9 +344,13 @@ function domColorCheckboxes() {
 function domFeatureCheckboxes() {
     // for (let i = 0; i < features.length; i++) 
 
+    // CHECK IF THE IDS ARE CORRECT
+    // let featureContent = $("featureContent")
+
+    // let mainDiv = document.createElement("div")
+    // colourContent.appendChild(mainDiv)
     for (let k in features) {
         let matching = countFeatures(k);
-        console.log(matching)
         let featureDiv = $("features");
         let featureInput = document.createElement('input');
         featureInput.type = "checkbox"

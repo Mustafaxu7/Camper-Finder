@@ -46,6 +46,8 @@ let clickCount = 0
 let id = 1
 
 let features: Record<string, string> = {
+    // 2nd paramater becomes object
+    // A: {text: "Fixed Roof", i: "<img src='https://img.icons8.com/material-sharp/50/000000/car-battery--v2.png'/>"},
     A: "Fixed Roof",
     B: 'Pop-Up Roof',
     C: 'Fridge',
@@ -67,7 +69,6 @@ let features: Record<string, string> = {
 // ARRAYS CREATED BY SPLITTING STRINGS
 
 let colours = "Red,Orange,Yellow,Green,Blue,Violet,Black,White,Gray".split(",")
-// let features = "Fixed Roof,Pop-Up Roof,Fridge,Propane Gas Cooktop,Electric Cooktop,Grill,Propane Gas Powered Water Heater,Kitchen,AC,Bed,Portable Toilet,Internal Power System,USB Charging Points,Folding Dining Table,Manual,Automatic,Travel Seats".split(",")
 makes.Volkswagen = "Caddy, California, Classic, Kombi, Trendline".split(",")
 makes.Ford = "Transit, Tourneo, Errier, Panama, Kombi".split(",")
 makes.Vauxhall = "Bedford, Midi, Movano, Turbo, Vivaro".split(",")
@@ -79,7 +80,7 @@ makes.Nissan = "NV200, ENV200, Primastar, Elgrand, Elgrande".split(",")
 
 vans = JSON.parse(localStorage.getItem("vans")!);
 if (vans == null) {
-    vans = generateRandomVans(makes, 100)
+    vans = generateRandomVans(makes, 50)
     saveVans()
 }
 renderVans(vans)
@@ -87,36 +88,33 @@ renderVans(vans)
 domColorCheckboxes()
 domFeatureCheckboxes()
 
-
 let filters = "price,location,colors,manufacturer,features".split(",")
 
-// Features
-let modal = document.querySelector(".modal");
-// let trigger = document.querySelector(".trigger");
+// function filterBy(type: string) {
+//     if (type == "features") {
+//         domFeatureCheckboxes()
+//     }
+//     if (type == "colors") {
+//         domColorCheckboxes();
+//     }
+//     if (type == 'price') {
+//         domPriceSlider()
+//     }
+// }
+
+
+// for (let i = 0; i < filters.length; i++) {
+//     let colourButton = $("colourTrigger")
+
+//     filterButton.addEventListener("click", () => filterBy(filters[i]))
+
+// }
 
 // CONTINUE HERE 
-
+let modal = document.querySelector(".modal");
 let colourButton = $("colourTrigger")
 colourButton.addEventListener("click", () => $("colourDiv").remove())
 colourButton.addEventListener("click", domColorCheckboxes)
-for (let i = 0; i < filters.length; i++) {
-    // let filterButton = document.createElement("button")
-
-    // filterButton.innerHTML = filters[i]
-    // filterButton.addEventListener("click", () => filterBy(filters[i]))
-
-    // $("filters").appendChild(filterButton)
-}
-
-function filterBy(type: string) {
-    if (type == "features") {
-        domFeatureCheckboxes()
-    }
-    if (type == "colors") {
-        domColorCheckboxes();
-    }
-
-}
 
 function showModal(section: string) {
     // Show the modal dialog and reveal the appropriate section
@@ -178,7 +176,6 @@ ukMapContainer.addEventListener("mousedown", mouseDown)
 let count = 5
 
 let dots: Circle[] = []
-
 function displayAmountCircles(clickedPosition: Vector, movedPosition: Vector) {
     locationFilteredVans = []
     let radius = Vector.distanceBetween(clickedPosition, movedPosition)
@@ -188,25 +185,32 @@ function displayAmountCircles(clickedPosition: Vector, movedPosition: Vector) {
             locationFilteredVans.push(vans[i])
         }
     }
+    // createDots()
     renderVans(locationFilteredVans)
 }
 
 
 // displayAmountCircles()
-function createDots {
 
-    for (let i = 0; i < vans.length; i++) {
-        dots.push(new Circle(1, vans[i].location.x, vans[i].location.x, 1))
+
+
+
+
+function createDots() {
+    if (filteredVans.length == 0) {
+        filteredVans = vans
+    }
+    else {
+        vans = filteredVans
+    }
+    for (let i = 0; i < filteredVans.length; i++) {
+        dots.push(new Circle(1, filteredVans[i].location.x, filteredVans[i].location.y, id))
+        for (let i = 0; i < dotElements.length; i++) {
+            dotElements[i].setAttribute("stroke", "red")
+        }
         dots[i].addCircle()
-        console.log(vans[i].location)
+        id++
     }
 }
-createDots()
-
-
-for (let i = 0; i < circles.length; i++) {
-    let normalRadius = circles[i].radius
-    let squaredRadius = Math.pow(circles[i].radius, 2)
-    let x = Math.sqrt((Math.random() * squaredRadius) + normalRadius) * Math.cos(Math.random() * 360)
-
-}
+$("activate").addEventListener("click", createDots)
+let dotElements = document.getElementsByClassName("savedCircles");
