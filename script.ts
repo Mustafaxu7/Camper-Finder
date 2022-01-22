@@ -45,7 +45,7 @@ let clickedMousePosition2 = new Vector(0, 0)
 let clickCount = 0
 let id = 1
 
-let features: Record<string, object> = {
+let features: Record<string, any> = {
     A: { text: "Fixed Roof", i: "<img src='https://img.icons8.com/windows/50/000000/car-roof-box.png'/>" },
     B: { text: 'Pop-Up Roof', i: "<img src='https://img.icons8.com/material-outlined/50/000000/convertible-roof-warning--v2.png'/>", },
     C: { text: 'Fridge', i: "<img src='https://img.icons8.com/material-outlined/50/000000/fridge.png'/>" },
